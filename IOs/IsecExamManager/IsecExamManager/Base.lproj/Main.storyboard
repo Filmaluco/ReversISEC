@@ -59,6 +59,9 @@
                             <barButtonItem systemItem="organize" id="rS0-t6-Dzj"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Ag7-ln-R7H" kind="show" identifier="editExamSegue" id="F63-sh-sId"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o2c-fp-d60" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -191,4 +194,7 @@
             <point key="canvasLocation" x="228" y="250.52473763118442"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="F63-sh-sId"/>
+    </inferredMetricsTieBreakers>
 </document>
