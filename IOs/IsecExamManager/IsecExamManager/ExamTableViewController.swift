@@ -110,8 +110,15 @@ class ExamTableViewController: UITableViewController {
         do{
             try courses = context.fetch(fetchRequest) as! [Course]
         }catch _ as NSError{print("Falhou a carregar (blame apple)")}
-        //para debug for course in courses { print(course.name)}
-        print("--------------")
+        //para debug
+        for course in courses {
+            print(course.name ?? "notDefined")
+            print(course.year ?? "notDefined")
+            print(course.semester ?? "notDefined")
+            print(course.examN ?? "notDefined")
+            print(course.examR ?? "notDefined")
+            print("--------------")
+        }
     }
 
 }

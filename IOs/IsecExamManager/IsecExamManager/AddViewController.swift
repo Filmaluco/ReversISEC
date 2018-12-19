@@ -11,10 +11,14 @@ import CoreData
 
 class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
+    @IBOutlet weak var tfName: UITextField!
+    
     @IBOutlet weak var yearPicker: UIPickerView!
     let yearData = Array(1...3)
     let semesterData = Array(1...2)
-    @IBOutlet weak var tfName: UITextField!
+    
+    @IBOutlet weak var normalPicker: UIDatePicker!
+    @IBOutlet weak var recursoPicker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +33,38 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let managedContext = appDelegate.persistentContainer.viewContext
         let courseEntity = NSEntityDescription.entity(forEntityName: "Course", in: managedContext)!
         
+       
         let course = NSManagedObject(entity: courseEntity, insertInto: managedContext)
         
+        //Check if the user doesnt exists
+        let courseFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Course")
+        courseFetch.fetchLimit = 1
+        courseFetch.predicate = NSPredicate(format: "name = %@", tfName.text!)
+        let fetchResult = try! managedContext.fetch(courseFetch)
+        
+        if (fetchResult.first != nil) {
+            print("Existe o curso #####")
+            tfName.textColor = UIColor.red
+            tfName.becomeFirstResponder()
+            return
+        }
+        tfName.textColor = UIColor.black
+        
+        
         course.setValue(tfName.text, forKey: "name")
+        
+        
+        course.setValue(yearData[yearPicker.selectedRow(inComponent:0)], forKey: "year")
+        course.setValue(semesterData[yearPicker.selectedRow(inComponent:1)], forKey: "semester")
+        
+        //Check if data is above today
+        course.setValue(normalPicker.date, forKey: "examN")
+        
+        
+        //check if recurso is above normal
+        course.setValue(recursoPicker.date, forKey: "examR")
+        
+        
         
         do {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }

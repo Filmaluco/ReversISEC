@@ -20,8 +20,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCourse" textLabel="HT5-q0-IHc" detailTextLabel="cTj-bV-JTS" style="IBUITableViewCellStyleSubtitle" id="epN-Da-zbA">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="epN-Da-zbA" id="PdL-E1-jJg">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -181,6 +180,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="normalPicker" destination="L18-oI-WLZ" id="uBM-1U-Q8p"/>
+                        <outlet property="recursoPicker" destination="Oix-QA-ObH" id="Fpt-gQ-4fN"/>
                         <outlet property="tfName" destination="x2D-LD-ewp" id="JKE-rh-063"/>
                         <outlet property="yearPicker" destination="gzw-qW-vyp" id="Rvd-ka-FYE"/>
                     </connections>
