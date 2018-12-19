@@ -104,12 +104,12 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         var course = NSManagedObject()
         do{
             let fetchResult = try managedContext.fetch(courseFetch)
-            let tmp = fetchResult.first as! NSManagedObject
+            let tmp = fetchResult.first as? NSManagedObject
             if fetchResult.first != nil{
                 print("Curso ja existe vamos modificalo")
                 nameLabel.textColor = UIColor.red
                 tfName.becomeFirstResponder()
-                course = tmp
+                course = tmp!
             }else{
                 course = NSManagedObject(entity: courseEntity, insertInto: managedContext)
             }
