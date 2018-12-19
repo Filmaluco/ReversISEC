@@ -12,6 +12,7 @@ import CoreData
 class ExamTableViewController: UITableViewController {
     
     var courses  = [Course]() // Where Locations = your NSManaged Class
+    var selectedCourse = Course()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +106,7 @@ class ExamTableViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
         
+        selectedCourse = courses[indexPath.row]
         performSegue(withIdentifier: "editExamSegue", sender: cell)
     }
 
@@ -125,15 +127,29 @@ class ExamTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "editExamSegue" {
+            let vc = segue.destination as! AddViewController
+            vc.oldCourse = selectedCourse
+            /*
+            let yearRow = Int(selectedCourse.year - 1)
+            let semesterRow = Int(selectedCourse.semester - 1)
+            vc.yearPicker?.selectRow(yearRow,inComponent: 0, animated: true)
+            vc.yearPicker?.selectRow(semesterRow,inComponent: 0, animated: true)
+            vc.tfName.text? = selectedCourse.name!
+            vc.normalPicker?.date = selectedCourse.examN!
+            vc.recursoPicker?.date = selectedCourse.examR!
+            vc.especialPicker?.date = selectedCourse.examE!
+            */
+        }
     }
-    */
+ 
     func refreshData(){
         print("Refresquei os meus dados --------------")
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }

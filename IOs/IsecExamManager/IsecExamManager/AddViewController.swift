@@ -27,6 +27,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var examRLabel: UILabel!
     @IBOutlet weak var exameELabel: UILabel!
     
+    var oldCourse = Course()
     
     
     override func viewDidLoad() {
@@ -34,6 +35,21 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         yearPicker.dataSource = self
         yearPicker.delegate = self
         yearPicker.tag = 1
+        
+        if oldCourse.name == nil {
+            self.title = "New Course"
+        }else{
+            self.title = "Update Course"
+            let yearRow = Int(oldCourse.year - 1)
+            let semesterRow = Int(oldCourse.semester - 1)
+            yearPicker.selectRow(yearRow,inComponent: 0, animated: true)
+            yearPicker.selectRow(semesterRow,inComponent: 1, animated: true)
+            tfName.text? = oldCourse.name!
+            normalPicker?.date = oldCourse.examN!
+            recursoPicker?.date = oldCourse.examR!
+            especialPicker?.date = oldCourse.examE!
+        }
+        
     }
     
     @IBAction func onSave(_ sender: Any) {
@@ -42,23 +58,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let managedContext = appDelegate.persistentContainer.viewContext
         let courseEntity = NSEntityDescription.entity(forEntityName: "Course", in: managedContext)!
         
-    
-        //Check if the user doesnt exists
-        let courseFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Course")
-        courseFetch.fetchLimit = 1
-        courseFetch.predicate = NSPredicate(format: "name = %@", tfName.text!)
-        courseFetch.returnsObjectsAsFaults = false
-        do{
-            let fetchResult = try managedContext.fetch(courseFetch)
-            if fetchResult.first != nil{
-                print("Existe o curso #####")
-                nameLabel.textColor = UIColor.red
-                tfName.becomeFirstResponder()
-                return
-            }
-        }catch{
-            return
-        }
         
         if (tfName.text?.count)! < 1 {
             nameLabel.textColor = UIColor.red
@@ -96,7 +95,30 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         examNLabel.textColor = UIColor.black
         
-        let course = NSManagedObject(entity: courseEntity, insertInto: managedContext)
+        //Check if the course doesnt exists if it does its now an update
+        
+        let courseFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Course")
+        courseFetch.fetchLimit = 1
+        courseFetch.predicate = NSPredicate(format: "name = %@", tfName.text!)
+        courseFetch.returnsObjectsAsFaults = false
+        var course = NSManagedObject()
+        do{
+            let fetchResult = try managedContext.fetch(courseFetch)
+            let tmp = fetchResult.first as! NSManagedObject
+            if fetchResult.first != nil{
+                print("Curso ja existe vamos modificalo")
+                nameLabel.textColor = UIColor.red
+                tfName.becomeFirstResponder()
+                course = tmp
+            }else{
+                course = NSManagedObject(entity: courseEntity, insertInto: managedContext)
+            }
+            
+        }catch{
+            return
+        }
+        
+        
         course.setValue(tfName.text, forKey: "name")
         course.setValue(yearData[yearPicker.selectedRow(inComponent:0)], forKey: "year")
         course.setValue(semesterData[yearPicker.selectedRow(inComponent:1)], forKey: "semester")

@@ -83,7 +83,7 @@
             </objects>
             <point key="canvasLocation" x="-1732" y="252"/>
         </scene>
-        <!--Exam Editor-->
+        <!--Exam-->
         <scene sceneID="JY6-ak-Uy6">
             <objects>
                 <viewController id="Ag7-ln-R7H" customClass="AddViewController" customModule="IsecExamManager" customModuleProvider="target" sceneMemberID="viewController">
@@ -197,7 +197,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gFp-en-XVA"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Exam Editor" id="b2S-FL-bj6">
+                    <navigationItem key="navigationItem" title="Exam" id="b2S-FL-bj6">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Vo2-Qh-JqJ">
                             <connections>
                                 <action selector="onSave:" destination="Ag7-ln-R7H" id="K5X-7l-w9B"/>
