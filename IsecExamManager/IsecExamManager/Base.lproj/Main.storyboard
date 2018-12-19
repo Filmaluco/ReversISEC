@@ -50,11 +50,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Isec ExamManager" id="Yan-jh-dxv">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fef-v5-4xc">
-                            <connections>
-                                <segue destination="Ag7-ln-R7H" kind="show" id="3nJ-im-tkH"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="Fef-v5-4xc">
+                                <connections>
+                                    <segue destination="Ag7-ln-R7H" kind="show" id="3nJ-im-tkH"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="organize" id="rS0-t6-Dzj"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o2c-fp-d60" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -85,38 +88,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkF-dk-17p">
-                                <rect key="frame" x="20" y="80" width="335" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkF-dk-17p">
+                                <rect key="frame" x="16" y="80" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x2D-LD-ewp">
-                                <rect key="frame" x="20" y="109" width="335" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x2D-LD-ewp">
+                                <rect key="frame" x="16" y="109" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Year / Semester" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oV-OD-esP">
-                                <rect key="frame" x="20" y="147" width="335" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year / Semester" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oV-OD-esP">
+                                <rect key="frame" x="16" y="147" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gzw-qW-vyp">
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gzw-qW-vyp">
                                 <rect key="frame" x="20" y="176" width="335" height="132"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="8xf-fO-KEE"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ExamN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eka-IQ-Kf5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ExamN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eka-IQ-Kf5">
                                 <rect key="frame" x="20" y="316" width="335" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ExamR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vi0-CA-6xK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ExamR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vi0-CA-6xK">
                                 <rect key="frame" x="20" y="473" width="335" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -141,56 +147,18 @@
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="VkF-dk-17p" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="0Eo-ng-IYi"/>
-                            <constraint firstItem="4oV-OD-esP" firstAttribute="top" secondItem="x2D-LD-ewp" secondAttribute="bottom" constant="8" id="22y-92-Z72"/>
-                            <constraint firstItem="Oix-QA-ObH" firstAttribute="top" secondItem="vi0-CA-6xK" secondAttribute="bottom" constant="8" id="4LQ-Rv-1rt"/>
-                            <constraint firstItem="x2D-LD-ewp" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="7bq-k4-ZC8"/>
-                            <constraint firstItem="vi0-CA-6xK" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="8Eq-ad-xr7"/>
-                            <constraint firstItem="vi0-CA-6xK" firstAttribute="top" secondItem="L18-oI-WLZ" secondAttribute="bottom" constant="8" id="9a7-l2-qr5"/>
-                            <constraint firstItem="eka-IQ-Kf5" firstAttribute="top" secondItem="gzw-qW-vyp" secondAttribute="bottom" constant="8" id="9c6-rQ-Gfm"/>
-                            <constraint firstItem="gzw-qW-vyp" firstAttribute="top" secondItem="4oV-OD-esP" secondAttribute="bottom" constant="8" id="D42-uX-bPI"/>
-                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="Oix-QA-ObH" secondAttribute="trailing" constant="20" id="FA6-m3-8LI"/>
-                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="gzw-qW-vyp" secondAttribute="trailing" constant="20" id="Gtz-2Y-ucs"/>
-                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="eka-IQ-Kf5" secondAttribute="trailing" constant="20" id="K66-EK-EzR"/>
-                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="L18-oI-WLZ" secondAttribute="trailing" constant="20" id="Kxv-A8-Vbo"/>
-                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="4oV-OD-esP" secondAttribute="trailing" constant="20" id="O6C-dK-pPB"/>
-                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="x2D-LD-ewp" secondAttribute="trailing" constant="20" id="R38-7f-0CR"/>
-                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="vi0-CA-6xK" secondAttribute="trailing" constant="20" id="Shj-lY-n2t"/>
-                            <constraint firstItem="L18-oI-WLZ" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="ZpG-rw-aoG"/>
-                            <constraint firstItem="Oix-QA-ObH" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="bhs-AD-rrA"/>
-                            <constraint firstItem="x2D-LD-ewp" firstAttribute="top" secondItem="VkF-dk-17p" secondAttribute="bottom" constant="8" id="h74-wx-7h2"/>
-                            <constraint firstItem="L18-oI-WLZ" firstAttribute="top" secondItem="eka-IQ-Kf5" secondAttribute="bottom" constant="8" id="mHB-Ad-8NJ"/>
-                            <constraint firstItem="4oV-OD-esP" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="mmh-XU-6bu"/>
-                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="VkF-dk-17p" secondAttribute="trailing" constant="20" id="pvH-xZ-7uY"/>
-                            <constraint firstItem="eka-IQ-Kf5" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="sHN-tS-gdd"/>
-                            <constraint firstItem="gzw-qW-vyp" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="xVk-vl-CK3"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gFp-en-XVA"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Exam Editor" id="b2S-FL-bj6"/>
+                    <navigationItem key="navigationItem" title="Exam Editor" id="b2S-FL-bj6">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Vo2-Qh-JqJ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="yearPicker" destination="gzw-qW-vyp" id="Rvd-ka-FYE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKU-G2-WKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="285.60000000000002" y="-99.400299850074973"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="IsecExamManager" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="287" y="556"/>
+            <point key="canvasLocation" x="228" y="251"/>
         </scene>
     </scenes>
 </document>
