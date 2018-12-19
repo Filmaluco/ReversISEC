@@ -27,27 +27,27 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var examRLabel: UILabel!
     @IBOutlet weak var exameELabel: UILabel!
     
-    var oldCourse = Course()
-    
+    var oldCourse : Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         yearPicker.dataSource = self
         yearPicker.delegate = self
         yearPicker.tag = 1
-        
-        if oldCourse.name == nil {
+       
+        if oldCourse == nil{
             self.title = "New Course"
         }else{
+            let course = oldCourse as! Course
             self.title = "Update Course"
-            let yearRow = Int(oldCourse.year - 1)
-            let semesterRow = Int(oldCourse.semester - 1)
+            let yearRow = Int(course.year - 1)
+            let semesterRow = Int(course.semester - 1)
             yearPicker.selectRow(yearRow,inComponent: 0, animated: true)
             yearPicker.selectRow(semesterRow,inComponent: 1, animated: true)
-            tfName.text? = oldCourse.name!
-            normalPicker?.date = oldCourse.examN!
-            recursoPicker?.date = oldCourse.examR!
-            especialPicker?.date = oldCourse.examE!
+            tfName.text? = course.name!
+            normalPicker?.date = course.examN!
+            recursoPicker?.date = course.examR!
+            especialPicker?.date = course.examE!
         }
         
     }
