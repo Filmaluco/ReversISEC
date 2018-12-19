@@ -14,23 +14,35 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var yearPicker: UIPickerView!
     let yearData = Array(1...3)
     let semesterData = Array(1...2)
-    
+    @IBOutlet weak var tfName: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         yearPicker.dataSource = self
         yearPicker.delegate = self
         yearPicker.tag = 1
-        
+    }
+    
+    @IBAction func onSave(_ sender: Any) {
+        print("Esta a tentar gravar --------------")
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         let courseEntity = NSEntityDescription.entity(forEntityName: "Course", in: managedContext)!
         
-        var course = NSManagedObject(entity: courseEntity, insertInto: managedContext)
-    }
-    
-    @IBAction func onSave(_ sender: Any) {
+        let course = NSManagedObject(entity: courseEntity, insertInto: managedContext)
         
+        course.setValue(tfName.text, forKey: "name")
+        
+        do {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            let managedContext = appDelegate.persistentContainer.viewContext
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        print("--------------")
+        
+        navigationController?.popViewController(animated: true)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

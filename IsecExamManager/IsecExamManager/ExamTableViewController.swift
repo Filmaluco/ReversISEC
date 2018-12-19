@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class ExamTableViewController: UITableViewController {
+    
+    var courses  = [Course]() // Where Locations = your NSManaged Class
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,30 +20,43 @@ class ExamTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // self.navigationItem.rightBarButtonItem = self.editButton
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        // #warning Incomplete implementation, return the number of 
+        return courses.count
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        refreshData()
+        tableView.reloadData()
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCourse", for: indexPath)
 
+        let row = indexPath.row
+        
+        cell.textLabel?.text = courses[row].name ?? "error loading from coursesData"
+        //cell.detailTextLabel?.textColor = UIColor.red
+        cell.detailTextLabel?.text = courses[row].name ?? "error loading from coursesData"
+        
+        
         // Configure the cell...
 
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.
@@ -86,5 +102,16 @@ class ExamTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func refreshData(){
+        print("Refresquei os meus dados --------------")
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Course")
+        do{
+            try courses = context.fetch(fetchRequest) as! [Course]
+        }catch _ as NSError{print("Falhou a carregar (blame apple)")}
+        //para debug for course in courses { print(course.name)}
+        print("--------------")
+    }
 
 }

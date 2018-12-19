@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="HT5-q0-IHc" detailTextLabel="cTj-bV-JTS" style="IBUITableViewCellStyleSubtitle" id="epN-Da-zbA">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCourse" textLabel="HT5-q0-IHc" detailTextLabel="cTj-bV-JTS" style="IBUITableViewCellStyleSubtitle" id="epN-Da-zbA">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="epN-Da-zbA" id="PdL-E1-jJg">
@@ -172,6 +172,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tfName" destination="x2D-LD-ewp" id="JKE-rh-063"/>
                         <outlet property="yearPicker" destination="gzw-qW-vyp" id="Rvd-ka-FYE"/>
                     </connections>
                 </viewController>
