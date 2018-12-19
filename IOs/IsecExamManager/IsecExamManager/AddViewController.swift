@@ -19,6 +19,15 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     @IBOutlet weak var normalPicker: UIDatePicker!
     @IBOutlet weak var recursoPicker: UIDatePicker!
+    @IBOutlet weak var especialPicker: UIDatePicker!
+    
+    //Labels for better input validation visualization
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var examNLabel: UILabel!
+    @IBOutlet weak var examRLabel: UILabel!
+    @IBOutlet weak var exameELabel: UILabel!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +49,10 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         courseFetch.predicate = NSPredicate(format: "name = %@", tfName.text!)
         courseFetch.returnsObjectsAsFaults = false
         do{
-            var fetchResult = try managedContext.fetch(courseFetch)
+            let fetchResult = try managedContext.fetch(courseFetch)
             if fetchResult.first != nil{
                 print("Existe o curso #####")
-                tfName.textColor = UIColor.red
+                nameLabel.textColor = UIColor.red
                 tfName.becomeFirstResponder()
                 return
             }
@@ -51,25 +60,49 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             return
         }
         
-        //Check if data is above today
-        //check if recurso is above normal
-
+        if (tfName.text?.count)! < 1 {
+            nameLabel.textColor = UIColor.red
+            tfName.becomeFirstResponder()
+            return
+        }
         
-        tfName.textColor = UIColor.black
+        nameLabel.textColor = UIColor.black
+        
+    
+        //Check if data is above today
+        if Date() < normalPicker.date {
+            normalPicker.becomeFirstResponder()
+            examNLabel.textColor = UIColor.red
+            return
+        }
+        
+        examNLabel.textColor = UIColor.black
+        
+        //check if recurso is above normal
+        if recursoPicker.date < normalPicker.date {
+            recursoPicker.becomeFirstResponder()
+            examRLabel.textColor = UIColor.red
+            return
+        }
+        
+        examRLabel.textColor = UIColor.black
+        
+        //check especial
+        if especialPicker.date < recursoPicker.date{
+            especialPicker.becomeFirstResponder()
+            exameELabel.textColor = UIColor.red
+            return
+        }
+        
+        examNLabel.textColor = UIColor.black
         
         let course = NSManagedObject(entity: courseEntity, insertInto: managedContext)
         course.setValue(tfName.text, forKey: "name")
-        
-        
         course.setValue(yearData[yearPicker.selectedRow(inComponent:0)], forKey: "year")
         course.setValue(semesterData[yearPicker.selectedRow(inComponent:1)], forKey: "semester")
-        
-        
         course.setValue(normalPicker.date, forKey: "examN")
-        
-        
-       
         course.setValue(recursoPicker.date, forKey: "examR")
+        course.setValue(especialPicker.date, forKey: "examE")
         
         
         

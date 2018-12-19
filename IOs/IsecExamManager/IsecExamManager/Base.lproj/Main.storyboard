@@ -205,6 +205,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="especialPicker" destination="9Wh-8K-BGB" id="wfb-jc-Bmn"/>
+                        <outlet property="examNLabel" destination="eka-IQ-Kf5" id="WKP-JL-82g"/>
+                        <outlet property="examRLabel" destination="vi0-CA-6xK" id="i1d-2I-d1M"/>
+                        <outlet property="exameELabel" destination="csl-ox-Wss" id="ITS-KJ-gBb"/>
+                        <outlet property="nameLabel" destination="VkF-dk-17p" id="D0j-MZ-YFF"/>
                         <outlet property="normalPicker" destination="L18-oI-WLZ" id="uBM-1U-Q8p"/>
                         <outlet property="recursoPicker" destination="Oix-QA-ObH" id="Fpt-gQ-4fN"/>
                         <outlet property="tfName" destination="x2D-LD-ewp" id="JKE-rh-063"/>
