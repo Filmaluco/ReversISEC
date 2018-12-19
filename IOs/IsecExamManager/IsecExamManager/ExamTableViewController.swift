@@ -71,24 +71,28 @@ class ExamTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             
+            let course = courses[indexPath.row]
+            print("Tentando apagar o user: \(course.name!)")
             
             //Remove query
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             let context = appDelegate.persistentContainer.viewContext
             let fetchRequest: NSFetchRequest<Course> = Course.fetchRequest()
-            fetchRequest.predicate = NSPredicate.init(format: "name==\(courses[indexPath.row])")
+            fetchRequest.predicate = NSPredicate.init(format: "name = %@", course.name!)
             let objects = try! context.fetch(fetchRequest)
             for obj in objects {
                 context.delete(obj)
             }
             
             do {
-                try context.save() // <- remember to put this :)
+                try context.save() 
+                    print("#########################")
             } catch {
-                print("Failed to properly delete")
+                print("Failed to properly delete ###################")
             }
             
             courses.remove(at: indexPath.row)
+            
             
             //TODO: remove from database 
             tableView.deleteRows(at: [indexPath], with: .fade)
