@@ -52,7 +52,8 @@ class ExamTableViewController: UITableViewController {
 
         let row = indexPath.row
         
-        //TODO fazer analise de dados, ver qual a data mais proximo e mostrar essa!!!! se a menos de 3 dias mostrar a vermelho
+        // #################################################################################################################################
+        //TODO: fazer analise de dados, ver qual a data mais proximo e mostrar essa!!!! se a menos de 3 dias mostrar a vermelho
         // mostrar ate que tipo de exame e se menos de um mes mostrar por mensagem!
         // exemplo
         
@@ -158,15 +159,19 @@ class ExamTableViewController: UITableViewController {
         }
     }
  
-    //RECEBER UMA ENUMERACAO LA DE CIMA
+    // #################################################################################################################################
+    //TODO:
+    //RECEBER UMA ENUMERACAO LA DE CIMA e ter uma predefeninda
     func refreshData(){
         print("Refresquei os meus dados --------------")
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Course")
         
+        // #################################################################################################################################
+        //TODO:
         //FAZER UM SWITCH BASEADO NA EMUM E FAZER O QUERY
-        //Exemplo de querys de orderBy:
+        //Exemplo de querys de orderBy name!!!!:
         let sort = NSSortDescriptor(key: #keyPath(Course.name), ascending: true)
         fetchRequest.sortDescriptors = [sort]
         
