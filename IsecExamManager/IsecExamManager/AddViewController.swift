@@ -21,6 +21,10 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         yearPicker.tag = 1
     }
     
+    @IBAction func onSave(_ sender: Any) {
+        
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }

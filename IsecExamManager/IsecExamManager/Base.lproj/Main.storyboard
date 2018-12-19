@@ -88,69 +88,88 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkF-dk-17p">
-                                <rect key="frame" x="16" y="80" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkF-dk-17p">
+                                <rect key="frame" x="20" y="80" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x2D-LD-ewp">
-                                <rect key="frame" x="16" y="109" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x2D-LD-ewp">
+                                <rect key="frame" x="20" y="109" width="335" height="59"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year / Semester" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oV-OD-esP">
-                                <rect key="frame" x="16" y="147" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Year / Semester" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oV-OD-esP">
+                                <rect key="frame" x="20" y="176" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gzw-qW-vyp">
-                                <rect key="frame" x="20" y="176" width="335" height="132"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gzw-qW-vyp">
+                                <rect key="frame" x="20" y="205" width="335" height="132"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ExamN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eka-IQ-Kf5">
-                                <rect key="frame" x="20" y="316" width="335" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ExamN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eka-IQ-Kf5">
+                                <rect key="frame" x="20" y="345" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ExamR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vi0-CA-6xK">
-                                <rect key="frame" x="20" y="473" width="335" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ExamR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vi0-CA-6xK">
+                                <rect key="frame" x="20" y="502" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Oix-QA-ObH">
-                                <rect key="frame" x="20" y="502" width="335" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="HST-Q8-b8w"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="531" width="335" height="120"/>
                                 <date key="date" timeIntervalSinceReferenceDate="566915933.87688303">
                                     <!--2018-12-19 12:38:53 +0000-->
                                 </date>
                             </datePicker>
                             <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="L18-oI-WLZ">
-                                <rect key="frame" x="20" y="345" width="335" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="jSj-xc-11U"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="374" width="335" height="120"/>
                                 <date key="date" timeIntervalSinceReferenceDate="566915933.87688303">
                                     <!--2018-12-19 12:38:53 +0000-->
                                 </date>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vi0-CA-6xK" firstAttribute="top" secondItem="L18-oI-WLZ" secondAttribute="bottom" constant="8" id="0DS-S2-DDO"/>
+                            <constraint firstItem="VkF-dk-17p" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="537-OA-4kJ"/>
+                            <constraint firstItem="eka-IQ-Kf5" firstAttribute="top" secondItem="gzw-qW-vyp" secondAttribute="bottom" constant="8" id="5Vc-Vs-mdg"/>
+                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="Oix-QA-ObH" secondAttribute="trailing" constant="20" id="AuE-Ld-0lW"/>
+                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="VkF-dk-17p" secondAttribute="trailing" constant="20" id="DDI-5A-8tF"/>
+                            <constraint firstItem="eka-IQ-Kf5" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="ErF-qr-ayx"/>
+                            <constraint firstItem="L18-oI-WLZ" firstAttribute="top" secondItem="eka-IQ-Kf5" secondAttribute="bottom" constant="8" id="GB4-ba-779"/>
+                            <constraint firstItem="gzw-qW-vyp" firstAttribute="top" secondItem="4oV-OD-esP" secondAttribute="bottom" constant="8" id="JhL-1Q-Zan"/>
+                            <constraint firstItem="x2D-LD-ewp" firstAttribute="top" secondItem="VkF-dk-17p" secondAttribute="bottom" constant="8" id="Nc9-yN-dYC"/>
+                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="gzw-qW-vyp" secondAttribute="trailing" constant="20" id="OOQ-BB-BMx"/>
+                            <constraint firstItem="vi0-CA-6xK" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="QJ9-Lk-yTy"/>
+                            <constraint firstItem="Oix-QA-ObH" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="QUh-hU-lkk"/>
+                            <constraint firstItem="gzw-qW-vyp" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="RcO-5o-s2C"/>
+                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="x2D-LD-ewp" secondAttribute="trailing" constant="20" id="Xli-7a-7Gq"/>
+                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="vi0-CA-6xK" secondAttribute="trailing" constant="20" id="Y5w-MB-Sgy"/>
+                            <constraint firstItem="VkF-dk-17p" firstAttribute="top" secondItem="gFp-en-XVA" secondAttribute="top" constant="16" id="YZV-FF-phG"/>
+                            <constraint firstItem="Oix-QA-ObH" firstAttribute="top" secondItem="vi0-CA-6xK" secondAttribute="bottom" constant="8" id="deh-X5-5fV"/>
+                            <constraint firstItem="x2D-LD-ewp" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="hKg-3j-TnQ"/>
+                            <constraint firstItem="gFp-en-XVA" firstAttribute="bottom" secondItem="Oix-QA-ObH" secondAttribute="bottom" constant="16" id="hlf-OU-UPN"/>
+                            <constraint firstItem="4oV-OD-esP" firstAttribute="top" secondItem="x2D-LD-ewp" secondAttribute="bottom" constant="8" id="mr4-az-jIa"/>
+                            <constraint firstItem="L18-oI-WLZ" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="ngw-Jw-XdW"/>
+                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="eka-IQ-Kf5" secondAttribute="trailing" constant="20" id="nh9-0d-vix"/>
+                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="4oV-OD-esP" secondAttribute="trailing" constant="20" id="pq6-Zn-kyS"/>
+                            <constraint firstItem="gFp-en-XVA" firstAttribute="trailing" secondItem="L18-oI-WLZ" secondAttribute="trailing" constant="20" id="qXN-FT-K8u"/>
+                            <constraint firstItem="4oV-OD-esP" firstAttribute="leading" secondItem="gFp-en-XVA" secondAttribute="leading" constant="20" id="rwr-cD-IQn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gFp-en-XVA"/>
                     </view>
                     <navigationItem key="navigationItem" title="Exam Editor" id="b2S-FL-bj6">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Vo2-Qh-JqJ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Vo2-Qh-JqJ">
+                            <connections>
+                                <action selector="onSave:" destination="Ag7-ln-R7H" id="K5X-7l-w9B"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="yearPicker" destination="gzw-qW-vyp" id="Rvd-ka-FYE"/>
