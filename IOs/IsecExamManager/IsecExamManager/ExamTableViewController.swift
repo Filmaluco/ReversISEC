@@ -11,6 +11,11 @@ import CoreData
 
 class ExamTableViewController: UITableViewController {
     
+    enum OrderBy :String{
+        case name
+        case Female
+    }
+    
     var courses  = [Course]() // Where Locations = your NSManaged Class
     var selectedCourse = Course()
 
@@ -46,6 +51,19 @@ class ExamTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCourse", for: indexPath)
 
         let row = indexPath.row
+        
+        //TODO fazer analise de dados, ver qual a data mais proximo e mostrar essa!!!! se a menos de 3 dias mostrar a vermelho
+        // mostrar ate que tipo de exame e se menos de um mes mostrar por mensagem!
+        // exemplo
+        
+        //AMOV
+        // Faltam 23dias para o exame de epoca normal (black)
+        
+        //AMOV
+        //Faltam 3 dias para o exame de epoca normal (RED)
+        
+        //AMOV )
+        //28 Jan 2018
         
         cell.textLabel?.text = courses[row].name ?? "error loading from coursesData"
         //cell.detailTextLabel?.textColor = UIColor.red
@@ -137,24 +155,21 @@ class ExamTableViewController: UITableViewController {
         if segue.identifier == "editExamSegue" {
             let vc = segue.destination as! AddViewController
             vc.oldCourse = selectedCourse
-            /*
-            let yearRow = Int(selectedCourse.year - 1)
-            let semesterRow = Int(selectedCourse.semester - 1)
-            vc.yearPicker?.selectRow(yearRow,inComponent: 0, animated: true)
-            vc.yearPicker?.selectRow(semesterRow,inComponent: 0, animated: true)
-            vc.tfName.text? = selectedCourse.name!
-            vc.normalPicker?.date = selectedCourse.examN!
-            vc.recursoPicker?.date = selectedCourse.examR!
-            vc.especialPicker?.date = selectedCourse.examE!
-            */
         }
     }
  
+    //RECEBER UMA ENUMERACAO LA DE CIMA
     func refreshData(){
         print("Refresquei os meus dados --------------")
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Course")
+        
+        //FAZER UM SWITCH BASEADO NA EMUM E FAZER O QUERY
+        //Exemplo de querys de orderBy:
+        let sort = NSSortDescriptor(key: #keyPath(Course.name), ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        
         do{
             try courses = context.fetch(fetchRequest) as! [Course]
         }catch _ as NSError{print("Falhou a carregar (blame apple)")}

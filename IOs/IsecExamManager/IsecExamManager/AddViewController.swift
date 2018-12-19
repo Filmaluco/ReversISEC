@@ -69,7 +69,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
     
         //Check if data is above today
-        if Date() < normalPicker.date {
+        if Date() > normalPicker.date {
             normalPicker.becomeFirstResponder()
             examNLabel.textColor = UIColor.red
             return
