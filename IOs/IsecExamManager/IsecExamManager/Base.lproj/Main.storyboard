@@ -20,8 +20,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCourse" textLabel="HT5-q0-IHc" detailTextLabel="cTj-bV-JTS" style="IBUITableViewCellStyleSubtitle" id="epN-Da-zbA">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="epN-Da-zbA" id="PdL-E1-jJg">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -60,6 +59,9 @@
                             <barButtonItem systemItem="organize" id="rS0-t6-Dzj"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Ag7-ln-R7H" kind="show" identifier="editExamSegue" id="F63-sh-sId"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o2c-fp-d60" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -190,4 +192,7 @@
             <point key="canvasLocation" x="228" y="250.52473763118442"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="F63-sh-sId"/>
+    </inferredMetricsTieBreakers>
 </document>
