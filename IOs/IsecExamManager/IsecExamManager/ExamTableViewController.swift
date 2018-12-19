@@ -15,7 +15,6 @@ class ExamTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -71,7 +70,26 @@ class ExamTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            
+            
+            //Remove query
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            let context = appDelegate.persistentContainer.viewContext
+            let fetchRequest: NSFetchRequest<Course> = Course.fetchRequest()
+            fetchRequest.predicate = NSPredicate.init(format: "name==\(courses[indexPath.row])")
+            let objects = try! context.fetch(fetchRequest)
+            for obj in objects {
+                context.delete(obj)
+            }
+            
+            do {
+                try context.save() // <- remember to put this :)
+            } catch {
+                print("Failed to properly delete")
+            }
+            
             courses.remove(at: indexPath.row)
+            
             //TODO: remove from database 
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -123,8 +141,8 @@ class ExamTableViewController: UITableViewController {
         //para debug
         for course in courses {
             print(course.name ?? "notDefined")
-            print(course.year ?? "notDefined")
-            print(course.semester ?? "notDefined")
+            print(course.year )
+            print(course.semester )
             print(course.examN ?? "notDefined")
             print(course.examR ?? "notDefined")
             print("--------------")

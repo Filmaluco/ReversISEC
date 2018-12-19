@@ -40,6 +40,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let courseFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Course")
         courseFetch.fetchLimit = 1
         courseFetch.predicate = NSPredicate(format: "name = %@", tfName.text!)
+        courseFetch.returnsObjectsAsFaults = false
         let fetchResult = try! managedContext.fetch(courseFetch)
         
         if (fetchResult.first != nil) {
