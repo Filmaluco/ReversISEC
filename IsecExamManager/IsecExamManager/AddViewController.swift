@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
@@ -14,11 +15,18 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     let yearData = Array(1...3)
     let semesterData = Array(1...2)
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         yearPicker.dataSource = self
         yearPicker.delegate = self
         yearPicker.tag = 1
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let courseEntity = NSEntityDescription.entity(forEntityName: "Course", in: managedContext)!
+        
+        var course = NSManagedObject(entity: courseEntity, insertInto: managedContext)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
