@@ -17,4 +17,5 @@ This feature allows the player to skip his turn, forcing the other player to mak
 # Aditional Info
 Besides the game theres also an IOs app to manage exams dates, in order to have a single repository the ios app is here, and the requirements can be found on the same document has the Android one.
 This game was made in order to match the specifications given to us in the course of AMOV, a Computer Science course in ISEC (2018).
+
 The specifications can be found here in [[PT]](https://github.com/Filmaluco/ReversISEC/blob/master/docs/TrabalhoPratico.pdf) and in [[EN]](https://github.com/Filmaluco/ReversISEC/blob/master/docs/PracticalWork.pdf)
