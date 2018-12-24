@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ReversISEC</string>
+    <string name="logoImageDescription">Logo</string>
+    <string name="mainMenuPlay">Play</string>
+    <string name="mainMenuInfo">Info</string>
+    <string name="mainMenuSettings">Settings</string>
+    <string name="gameModeMenu">Game Mode</string>
+    <string name="versus">VS</string>
+    <string name="extraMoveDescription">Extra Move</string>
+    <string name="settingsDescription">Game Settings</string>
+    <string name="passMoveDescription">Pass Move</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="createGame">Create New Game</string>
+    <string name="gamesAvailable">Games Available</string>
+    <string name="noGames">No Games Available</string>
+
+
+</resources>

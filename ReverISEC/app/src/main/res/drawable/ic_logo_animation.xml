@@ -1,0 +1,10 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/ic_logo"
+        android:duration="4000" />
+
+    <item
+        android:drawable="@drawable/ic_logo_switched"
+        android:duration="4000" />
+
+</animation-list>
