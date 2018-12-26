@@ -14,14 +14,26 @@ import com.example.rmcsilva.reverisectest.R;
 
 public class Board extends View{
 
+    public enum ReversiCell {
+        EMPTY,
+        WHITE,
+        BLACK
+    }
+
+    public static class BoardPosition {
+        public int y = -1;
+        public int x = -1;
+    }
+
     // here were some hardcoded assumptions
-    //protect with fragment WIDTH and fragment HEIGHT
+    //TODO: protect with fragment WIDTH or HEIGHT (depending on the biggest)
     int BOARD_SCREEN_SIZE = 500;
 
     int BOARD_DIMS = 8;
     int CELL_SIZE = BOARD_SCREEN_SIZE/BOARD_DIMS;
     int PIECE_RADIUS = 4*CELL_SIZE /10;
     int CELL_PADDING = (CELL_SIZE)/2;
+
 
     Paint paint = new Paint();
     GameState state;
@@ -58,7 +70,7 @@ public class Board extends View{
         Log.v("GameBoardView", "User tried to move at " + x + ", " + y);
 
         // is it the user's turn?
-        if(state.currentPlayer != CellType.WHITE) {
+        if(state.currentPlayer != ReversiCell.WHITE) {
             Log.e("GameBoardView", "It wasn't the user's turn! Reprimanding ;)");
             Toast.makeText(this.context, "Not your turn", Toast.LENGTH_SHORT).show();
             return;
@@ -102,37 +114,37 @@ public class Board extends View{
 
     @Override
     public void onDraw(Canvas canvas) {
-        int i, j;
+        int x, y;
 
         // draw vertical board lines
         paint.setColor(getResources().getColor(R.color.colorPrimaryLigh));
         paint.setStrokeWidth(2);
-        for(i=0; i<BOARD_DIMS; i++) {
-            canvas.drawLine(i*CELL_SIZE, 0, i*CELL_SIZE, BOARD_SCREEN_SIZE, paint);
+        for(y=0; y<BOARD_DIMS; y++) {
+            canvas.drawLine(y*CELL_SIZE, 0, y*CELL_SIZE, BOARD_SCREEN_SIZE, paint);
         }
         canvas.drawLine(BOARD_SCREEN_SIZE, 0, BOARD_SCREEN_SIZE, BOARD_SCREEN_SIZE, paint);
 
         // draw horizontal board lines
-        for(i=0; i<BOARD_DIMS; i++) {
-            canvas.drawLine(0, i*CELL_SIZE, BOARD_SCREEN_SIZE, i*CELL_SIZE, paint);
+        for(y=0; y<BOARD_DIMS; y++) {
+            canvas.drawLine(0, y*CELL_SIZE, BOARD_SCREEN_SIZE, y*CELL_SIZE, paint);
         }
         canvas.drawLine(0, BOARD_SCREEN_SIZE, BOARD_SCREEN_SIZE, BOARD_SCREEN_SIZE, paint);
 
 
         // now draw the pieces on the board
-        for(i=0; i<BOARD_DIMS; i++){
-            for(j=0; j<BOARD_DIMS; j++){
-                CellType piece = state.board[i][j];
-                if(piece == CellType.WHITE || piece == CellType.BLACK) {
-                    if(piece == CellType.WHITE) {
+        for(y=0; y<BOARD_DIMS; y++){
+            for(x=0; x<BOARD_DIMS; x++){
+                ReversiCell piece = state.board[y][x];
+                if(piece == ReversiCell.WHITE || piece == ReversiCell.BLACK) {
+                    if(piece == ReversiCell.WHITE) {
                         paint.setColor(Color.WHITE);
                     }
-                    if(piece == CellType.BLACK) {
+                    if(piece == ReversiCell.BLACK) {
                         paint.setColor(Color.BLACK);
                     }
                     canvas.drawCircle(
-                            (i * CELL_SIZE) + CELL_PADDING,
-                            (j * CELL_SIZE) + CELL_PADDING,
+                            (y * CELL_SIZE) + CELL_PADDING,
+                            (x * CELL_SIZE) + CELL_PADDING,
                             PIECE_RADIUS, // radius
                             paint);
                 }

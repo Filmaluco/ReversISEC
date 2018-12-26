@@ -1,8 +1,7 @@
 package com.example.rmcsilva.reverisectest.ReversiLogic.AI;
 
-import com.example.rmcsilva.reverisectest.ReversiLogic.BoardPosition;
-import com.example.rmcsilva.reverisectest.ReversiLogic.CellType;
 import com.example.rmcsilva.reverisectest.ReversiLogic.GameState;
+import  com.example.rmcsilva.reverisectest.ReversiLogic.Board.*;
 
 public class NegamaxAI implements AI {
     private static int maxPly = 3;
@@ -36,8 +35,8 @@ public class NegamaxAI implements AI {
 
         for(int i=0; i<8; i++){
             for(int j=0; j<8; j++){
-                CellType piece = state.board[i][j];
-                if(piece == CellType.EMPTY){
+                ReversiCell piece = state.board[i][j];
+                if(piece == ReversiCell.EMPTY){
                     int capture = state.move(i, j, false);
                     if(capture > 0) boardScore += mobilityValue;
                     if(capture > bestCapture) bestCapture = capture;
@@ -73,8 +72,8 @@ public class NegamaxAI implements AI {
                     if(childWeight > alpha) {
                         alpha = childWeight;
                         if(ply == maxPly) {
-                            best.i = i;
-                            best.j = j;
+                            best.y = i;
+                            best.x = j;
                         }
                     }
                 }
@@ -93,13 +92,13 @@ public class NegamaxAI implements AI {
 
     @Override
     public BoardPosition computerMove(GameState state) {
-        assert(state.currentPlayer == CellType.BLACK);
+        assert(state.currentPlayer == ReversiCell.BLACK);
         best = new BoardPosition();
         negamax(state, maxPly);
-        assert(best.i < state.dims && best.j < state.dims);
-        // note that best.i & j MAY be -1 if there's no legal move we could
+        assert(best.y < state.dims && best.x < state.dims);
+        // note that best.y & x MAY be -1 if there's no legal move we could
         // make from the current position! Trap it anyhow b/c it's interesting
-        assert(best.i >= 0 && best.j >= 0);
+        assert(best.y >= 0 && best.x >= 0);
         return best;
     }
 }

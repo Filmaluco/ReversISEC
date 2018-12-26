@@ -7,11 +7,12 @@ import android.util.Log;
 
 import com.example.rmcsilva.reverisectest.ReversiLogic.AI.AI;
 import com.example.rmcsilva.reverisectest.ReversiLogic.AI.NegamaxAI;
+import  com.example.rmcsilva.reverisectest.ReversiLogic.Board.ReversiCell;
 
 public class GameState {
-    public CellType board[][];
+    public ReversiCell board[][];
     public int dims;
-    public CellType currentPlayer;
+    public ReversiCell currentPlayer;
     public AI ai;
     public Board view;
 
@@ -19,7 +20,7 @@ public class GameState {
     public GameState(int dims, Board view) {
         this.dims = dims;
         this.view = view;
-        board = new CellType[dims][dims];
+        board = new ReversiCell[dims][dims];
         ai = new NegamaxAI();
         clearBoard();
     }
@@ -29,7 +30,7 @@ public class GameState {
         this.dims = copy.dims;
         this.currentPlayer = copy.currentPlayer;
         this.ai = copy.ai;
-        this.board = new CellType[dims][dims];
+        this.board = new ReversiCell[dims][dims];
         int i, j;
         for(i=0; i<dims; i++){
             for(j=0; j<dims; j++){
@@ -45,19 +46,19 @@ public class GameState {
         int i, j;
         for(i=0; i<dims; i++){
             for(j=0; j<dims; j++){
-                board[i][j] = CellType.EMPTY;
+                board[i][j] = ReversiCell.EMPTY;
             }
         }
 
         // place the starting pieces.
         i = (int)((dims-1)/2);
-        board[i][i] = CellType.WHITE;
-        board[i+1][i+1] = CellType.WHITE;
-        board[i][i+1] = CellType.BLACK;
-        board[i+1][i] = CellType.BLACK;
+        board[i][i] = ReversiCell.WHITE;
+        board[i+1][i+1] = ReversiCell.WHITE;
+        board[i][i+1] = ReversiCell.BLACK;
+        board[i+1][i] = ReversiCell.BLACK;
 
         // white goes first
-        currentPlayer = CellType.WHITE;
+        currentPlayer = ReversiCell.WHITE;
 
         // redraw the board.
         view.invalidate();
@@ -73,10 +74,10 @@ public class GameState {
         // tally the counts
         for(i=0;i<dims;i++){
             for(j=0;j<dims;j++){
-                if(board[i][j] == CellType.WHITE){
+                if(board[i][j] == ReversiCell.WHITE){
                     whitePieces++;
                 }
-                if(board[i][j] == CellType.BLACK){
+                if(board[i][j] == ReversiCell.BLACK){
                     blackPieces++;
                 }
             }
@@ -105,15 +106,15 @@ public class GameState {
             }
         });
         builder.create().show();
-        this.currentPlayer = CellType.EMPTY;
+        this.currentPlayer = ReversiCell.EMPTY;
     }
 
 
     // background task to do computer move computation OFF of the UI thread.
-    private class AITask extends AsyncTask<GameState, Integer, BoardPosition> {
+    private class AITask extends AsyncTask<GameState, Integer, Board.BoardPosition> {
 
         @Override
-        protected BoardPosition doInBackground(GameState... states) {
+        protected Board.BoardPosition doInBackground(GameState... states) {
 
             Log.i("GameState", "Computation thread started...");
 
@@ -131,13 +132,13 @@ public class GameState {
 
 
         @Override
-        protected void onPostExecute(BoardPosition result) {
+        protected void onPostExecute(Board.BoardPosition result) {
             // done computing our move, now back on the main thread.
             Log.i("GameState", "Computation thread finished.");
             super.onPostExecute(result);
 
-            Log.i("GameState", "Computer moving at " + result.i + ", " + result.j);
-            int numCaptured = move(result.i, result.j, true);
+            Log.i("GameState", "Computer moving at " + result.y + ", " + result.x);
+            int numCaptured = move(result.y, result.x, true);
             Log.i("GameState", "  Computer captured " + numCaptured);
 
             view.invalidate(); // redraw the board now that the computer's moved!
@@ -148,8 +149,8 @@ public class GameState {
 
 
     public void swapSides() {
-        assert(currentPlayer != CellType.EMPTY);
-        currentPlayer = (currentPlayer == CellType.WHITE)? CellType.BLACK : CellType.WHITE;
+        assert(currentPlayer != ReversiCell.EMPTY);
+        currentPlayer = (currentPlayer == ReversiCell.WHITE)? ReversiCell.BLACK : ReversiCell.WHITE;
     }
 
 
@@ -172,7 +173,7 @@ public class GameState {
         } else {
             // if a move is possible and it's the computer's turn,
             // fire up the AI task to make a move!
-            if(currentPlayer == CellType.BLACK) {
+            if(currentPlayer == ReversiCell.BLACK) {
                 new AITask().execute(this);
             }
         }
@@ -203,7 +204,7 @@ public class GameState {
         assert(j < dims);
 
         // if the proposed space is already occupied, bail.
-        if(board[i][j] != CellType.EMPTY){
+        if(board[i][j] != ReversiCell.EMPTY){
             return 0;
         }
 
@@ -224,10 +225,10 @@ public class GameState {
                     // if the ray has gone out of bounds, give up
                     if(ray_i < 0 || ray_i >= dims || ray_j < 0 || ray_j >= dims){ break; }
 
-                    CellType ray_cell = board[ray_i][ray_j];
+                    ReversiCell ray_cell = board[ray_i][ray_j];
 
                     // if we hit a blank cell before terminating a sequence, give up
-                    if(ray_cell == CellType.EMPTY){ break; }
+                    if(ray_cell == ReversiCell.EMPTY){ break; }
 
                     // if we hit a piece that's our own, let's capture the sequence
                     if(ray_cell == currentPlayer){
