@@ -9,10 +9,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.rmcsilva.reverisectest.R;
+
 
 public class Board extends View{
-    // here were some hardcoded assumptions that worked well for the emulator
+
+    // here were some hardcoded assumptions
+    //protect with fragment WIDTH and fragment HEIGHT
     int BOARD_SCREEN_SIZE = 500;
+
     int BOARD_DIMS = 8;
     int CELL_SIZE = BOARD_SCREEN_SIZE/BOARD_DIMS;
     int PIECE_RADIUS = 4*CELL_SIZE /10;
@@ -100,7 +105,7 @@ public class Board extends View{
         int i, j;
 
         // draw vertical board lines
-        paint.setColor(Color.WHITE);
+        paint.setColor(getResources().getColor(R.color.colorPrimaryLigh));
         paint.setStrokeWidth(2);
         for(i=0; i<BOARD_DIMS; i++) {
             canvas.drawLine(i*CELL_SIZE, 0, i*CELL_SIZE, BOARD_SCREEN_SIZE, paint);
@@ -123,7 +128,7 @@ public class Board extends View{
                         paint.setColor(Color.WHITE);
                     }
                     if(piece == CellType.BLACK) {
-                        paint.setColor(Color.GRAY);
+                        paint.setColor(Color.BLACK);
                     }
                     canvas.drawCircle(
                             (i * CELL_SIZE) + CELL_PADDING,

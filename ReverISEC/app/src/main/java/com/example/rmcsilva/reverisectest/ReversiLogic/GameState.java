@@ -95,7 +95,7 @@ public class GameState {
         }
         */
 
-        builder.setMessage("GameOver");
+        builder.setMessage("GameOver {implement system to load from string values the condition of the game}");
 
         builder.setPositiveButton("New Game", new DialogInterface.OnClickListener() {
             @Override
@@ -237,7 +237,7 @@ public class GameState {
                             if(doMove) { // okay, let's actually execute on this
                                 while(steps-- > 0){
                                     board[i + (dx*steps)][j + (dy*steps)] = currentPlayer;
-                                };
+                                }
                             }
                         }
                         break;
