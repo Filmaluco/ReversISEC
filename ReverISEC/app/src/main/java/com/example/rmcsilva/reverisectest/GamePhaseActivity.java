@@ -27,6 +27,7 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         gameMode = GameDataModel.GameMode.valueOf(getIntent().getExtras().getString("gameMode"));
 
         setContentView(R.layout.activity_game_phase);

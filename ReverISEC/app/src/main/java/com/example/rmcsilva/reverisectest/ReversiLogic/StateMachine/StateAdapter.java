@@ -10,7 +10,7 @@ public class StateAdapter implements IState {
     public StateAdapter(GameDataModel g) { this.game = g; }
 
     @Override
-    public IState start(GameDataModel.GameMode mode) { return this; }
+    public IState start() { return this; }
 
     @Override
     public IState surrender() {

@@ -5,7 +5,7 @@ import  com.example.rmcsilva.reverisectest.ReversiLogic.GameDataModel.*;
 
 public interface IState {
 
-    IState start(GameMode mode);
+    IState start();
     IState surrender();
     IState gameOver();
 

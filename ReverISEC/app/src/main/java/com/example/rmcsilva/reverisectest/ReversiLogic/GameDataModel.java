@@ -1,8 +1,15 @@
 package com.example.rmcsilva.reverisectest.ReversiLogic;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.rmcsilva.reverisectest.ReversiLogic.Board.*;
 
-public class GameDataModel {
+import java.io.Serializable;
+
+public class GameDataModel implements Serializable {
+
+    public final static long serialVersionUID = 1L;
 
     //----------------------------------------------------------------------------------------------
     // Variables
@@ -23,8 +30,8 @@ public class GameDataModel {
     private boolean isOver;
     private moveStatus skipMove[], extraMove[];
         //UI
-    protected int whitePieces = 0;
-    protected int blackPieces = 0;
+    private int whitePieces = 0;
+    private int blackPieces = 0;
 
     //----------------------------------------------------------------------------------------------
     // Constructors
@@ -60,6 +67,8 @@ public class GameDataModel {
         this.isOver = copy.isOver;
         this.skipMove = copy.skipMove;
         this.extraMove = copy.extraMove;
+        this.whitePieces = copy.whitePieces;
+        this.blackPieces = copy.blackPieces;
         for(int y=0; y<SIZE; y++){
             for(int x=0; x<SIZE; x++){
                 this.boardData[y][x] = copy.boardData[y][x];
@@ -74,7 +83,7 @@ public class GameDataModel {
     /**
      * Clears the board
      */
-    public void clearBoard() {
+    private void clearBoard() {
 
         // empty the board.
         for(int y=0; y<SIZE; y++){

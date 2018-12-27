@@ -9,7 +9,7 @@ public class GameSetup extends StateAdapter {
     }
 
     @Override
-    public IState start(GameMode mode) {
-        return new PlayerTurn(new GameDataModel(mode));
+    public IState start() {
+        return new PlayerTurn(game);
     }
 }

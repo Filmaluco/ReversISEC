@@ -6,6 +6,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.support.v4.app.Fragment;
@@ -71,11 +72,11 @@ public class GameActionFragment extends Fragment {
     // Fragment life cycle
     //----------------------------------------------------------------------------------------------
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
 
-        //Make sure the view that calls this fragment has a listener to interact with this fragment
         try {
             mListener = (OnFragmentInteractionListener) getActivity();
             mActivity = getActivity();
@@ -84,20 +85,14 @@ public class GameActionFragment extends Fragment {
             throw new ClassCastException(getActivity().toString()
                     + " must implement OnFragmentInteractionListener");
         }
-    }
-    @Override
-    public void onStart(){
-        super.onStart();
-    }
 
-    @SuppressLint("ClickableViewAccessibility")
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        state = new GameSetup(null);
+        if (savedInstanceState != null)
+            state = new GameSetup((GameDataModel) savedInstanceState.getSerializable("game"));
 
-        //Setup Game
-        state = state.start(gameMode);
+        if(state == null)
+            state = new GameSetup(new GameDataModel(gameMode));
+
+        state = state.start();
 
         //Start game
         try{
@@ -141,7 +136,7 @@ public class GameActionFragment extends Fragment {
                     // UI interaction
                     updateScore();
                     newTurn();
-                    v.invalidate();
+                    board.invalidate();
                     // Check if game is over
                     if(state.getGame().isOver()) {
                         state = state.gameOver();
@@ -158,13 +153,9 @@ public class GameActionFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
     public void onDetach() {
         super.onDetach();
+        mActivity = null;
         mListener = null;
     }
 
@@ -227,5 +218,16 @@ public class GameActionFragment extends Fragment {
         newTurn();
         board.invalidate();
     }
+
+    //----------------------------------------------------------------------------------------------
+    // Screen rotations....
+    //----------------------------------------------------------------------------------------------
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("game", state.getGame());
+    }
+
 }
 
