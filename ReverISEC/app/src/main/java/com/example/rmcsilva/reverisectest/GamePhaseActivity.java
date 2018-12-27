@@ -1,19 +1,25 @@
 package com.example.rmcsilva.reverisectest;
 
-import android.net.Uri;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.rmcsilva.reverisectest.ReversiLogic.GameDataModel;
 
 public class GamePhaseActivity extends AppCompatActivity implements GameActionFragment.OnFragmentInteractionListener {
 
-    TextView whiteScore;
-    TextView blackScore;
+    TextView tvWhiteScore,
+             tvBlackScore;
+
+    ImageButton btnExtra,
+                btnSkip;
+
     GameDataModel.GameMode gameMode;
+    GameActionFragment gameFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,16 +29,27 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
 
         setContentView(R.layout.activity_game_phase);
 
-        blackScore = findViewById(R.id.tvPlayerOneScore);
-        whiteScore = findViewById(R.id.tvPlayerTwoScore);
+        tvBlackScore = findViewById(R.id.tvPlayerOneScore);
+        tvWhiteScore = findViewById(R.id.tvPlayerTwoScore);
+        btnExtra = findViewById(R.id.btnExtraMove);
+        btnSkip = findViewById(R.id.btnPassMove);
+
+        gameFragment = (GameActionFragment) getSupportFragmentManager().findFragmentById(R.id.gameFragment);
     }
 
     public void onExtraMove(View view){
         Log.i("Reversi", "onExtraMove");
+        if(!gameFragment.canExtra()) return;
+        gameFragment.useExtra();
+        btnExtra.setAlpha(0.5F);
+
     }
 
     public void onSkipMove(View view){
         Log.i("Reversi", "onSkipMove");
+        if(!gameFragment.canSkip()) return;
+        btnSkip.setAlpha(0.5F);
+        gameFragment.useSkip();
     }
 
     @Override
@@ -41,8 +58,8 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
     }
 
     public void updateScore(int black, int white){
-        blackScore.setText(Integer.toString(black));
-        whiteScore.setText(Integer.toString(white));
+        tvBlackScore.setText(Integer.toString(black));
+        tvWhiteScore.setText(Integer.toString(white));
     }
 
     @Override
@@ -55,5 +72,18 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
         return gameMode;
     }
 
+    @Override
+    public void newTurn() {
+        if(gameFragment.canSkip()){
+            btnSkip.setAlpha(1F);
+        }else{
+            btnSkip.setAlpha(0.5F);
+        }
+        if(gameFragment.canExtra()){
+            btnExtra.setAlpha(1F);
+        }else {
+            btnExtra.setAlpha(0.5F);
+        }
+    }
 
 }

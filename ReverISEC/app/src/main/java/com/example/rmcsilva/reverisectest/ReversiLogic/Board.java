@@ -71,7 +71,7 @@ public class Board extends View{
         if(game.getGameMode() == GameDataModel.GameMode.COMPUTER){
             paint.setColor(getResources().getColor(R.color.colorPrimaryLigh));
         }else {
-            if(game.getPlayer() == ReversiCell.WHITE)  paint.setColor(Color.GRAY); //white is too agressive gray is nhee TODO: I leave up to you Ricardo
+            if(game.getPlayer() == ReversiCell.WHITE)  paint.setColor(Color.parseColor("#F6D1D1")); //white is too agressive gray is nhee TODO: I leave up to you Ricardo
             else                                       paint.setColor(Color.BLACK);
         }
 

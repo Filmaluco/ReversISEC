@@ -21,6 +21,7 @@ import com.example.rmcsilva.reverisectest.ReversiLogic.Board;
 import com.example.rmcsilva.reverisectest.ReversiLogic.GameDataModel;
 import com.example.rmcsilva.reverisectest.ReversiLogic.StateMachine.GameSetup;
 import com.example.rmcsilva.reverisectest.ReversiLogic.StateMachine.IState;
+import com.example.rmcsilva.reverisectest.ReversiLogic.StateMachine.SelectionPhase;
 
 public class GameActionFragment extends Fragment {
 
@@ -38,6 +39,7 @@ public class GameActionFragment extends Fragment {
         void updateScore(int black, int white);
         void addicionalMoves(GameDataModel game);
         GameDataModel.GameMode getGameMode();
+        void newTurn();
     }
 
     //----------------------------------------------------------------------------------------------
@@ -48,7 +50,7 @@ public class GameActionFragment extends Fragment {
     Activity mActivity;
 
     //View
-    View board;
+    Board board;
 
     //GameLogic
     IState state;
@@ -94,11 +96,13 @@ public class GameActionFragment extends Fragment {
         // Inflate the layout for this fragment
         state = new GameSetup(null);
 
-        //Start Game
+        //Setup Game
         state = state.start(gameMode);
+
+        //Start game
         state = state.canPlay();
 
-        final Board board = new Board(getContext(), state.getGame());
+        board = new Board(getContext(), state.getGame());
         board.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
         board.setOnTouchListener(new View.OnTouchListener(){
             @Override
@@ -117,7 +121,7 @@ public class GameActionFragment extends Fragment {
                         Toast.makeText(getContext(), R.string.cantPlayThere, Toast.LENGTH_SHORT).show();
                     }
 
-                    //Check if any move selected
+                    //Check if game is over
 
 
                     // State Machine full rotation
@@ -127,6 +131,7 @@ public class GameActionFragment extends Fragment {
                     state = state.canPlay();
                     // UI interaction
                     updateScore();
+                    newTurn();
                     //lock button accordingly (special moves)
                     if(state.getGame().isOver()) gameOver();
                         //updateUI
@@ -168,7 +173,7 @@ public class GameActionFragment extends Fragment {
     }
 
     //----------------------------------------------------------------------------------------------
-    // View Interaction
+    // View Interaction (frag -> view)
     //----------------------------------------------------------------------------------------------
     private void updateScore() {
 
@@ -183,4 +188,37 @@ public class GameActionFragment extends Fragment {
     private void addicionalMoves(){
         mListener.addicionalMoves(state.getGame());
     }
+
+    private void newTurn(){
+        mListener.newTurn();
+    }
+
+
+    //----------------------------------------------------------------------------------------------
+    // View Interaction (view -> frag)
+    //----------------------------------------------------------------------------------------------
+    public boolean canExtra() {
+        return state.getGame().canExtra();
+    }
+
+    public void useExtra() {
+        state.getGame().useExtra();
+    }
+
+    public boolean canSkip() {
+        return state.getGame().canSkip();
+    }
+
+    public void useSkip(){
+        state.getGame().useSkip();
+        state.getGame().useMove();
+        state = new SelectionPhase(state.getGame());
+        state = state.applyRules();
+        if(state.getGame().isOver()){ state = state.gameOver(); return;}
+        state = state.nextPlayer();
+        state = state.canPlay();
+        newTurn();
+        board.invalidate();
+    }
 }
+

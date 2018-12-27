@@ -39,10 +39,11 @@ public class GameDataModel {
         this.boardData = new ReversiCell[SIZE][SIZE];
         this.loopControl = 1;
         this.gameMode = gameMode;
-        this.clearBoard();
         this.isOver = false;
-        this.skipMove = new moveStatus[2];
-        this.extraMove = new moveStatus[2];
+        this.skipMove = new moveStatus[2]; skipMove[0] = moveStatus.NOT_USED; skipMove[1] = moveStatus.NOT_USED;
+        this.extraMove = new moveStatus[2]; extraMove[0] = moveStatus.NOT_USED; extraMove[1] = moveStatus.NOT_USED;
+
+        this.clearBoard();
     }
 
     /**
@@ -224,6 +225,12 @@ public class GameDataModel {
         this.gameMode = mode;
     }
 
+
+
+    //----------------------------------------------------------------------------------------------
+    // Special Moves
+    //----------------------------------------------------------------------------------------------
+
     public void useSkip(){
         if( currentPlayer == ReversiCell.WHITE ) skipMove[0] = moveStatus.SELECTED;
         else                                     skipMove[1] = moveStatus.SELECTED;
@@ -250,7 +257,6 @@ public class GameDataModel {
         if( currentPlayer == ReversiCell.WHITE )  return extraMove[0] == moveStatus.SELECTED;
         else                                      return extraMove[1] == moveStatus.SELECTED;
     }
-
 
     //----------------------------------------------------------------------------------------------
     // UI Methods
