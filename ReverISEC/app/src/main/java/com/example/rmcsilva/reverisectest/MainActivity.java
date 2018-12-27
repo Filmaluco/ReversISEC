@@ -37,4 +37,9 @@ public class MainActivity extends AppCompatActivity {
         Intent playGame = new Intent(MainActivity.this, GameModeSelectionActivity.class);
         MainActivity.this.startActivity(playGame);
     }
+
+    public void gameSettings(View view) {
+        Intent gameSettings = new Intent(MainActivity.this, GameSettingsActivity.class);
+        MainActivity.this.startActivity(gameSettings);
+    }
 }
