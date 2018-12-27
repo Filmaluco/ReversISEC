@@ -10,21 +10,6 @@ public class PlayerSelection extends StateAdapter {
     @Override
     public IState nextPlayer() {
         game.swapSides();
-
-        if(game.isOver()){
-            return this;
-        }
-
-        if(game.getBlackPieces() + game.getWhitePieces() == 8*8){
-            game.over();
-            return this;
-        }
-
-        if(game.inLopp()){
-            game.over();
-            return this;
-        }
-
         return new PlayerTurn(game);
     }
 

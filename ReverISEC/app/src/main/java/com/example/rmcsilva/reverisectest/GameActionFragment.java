@@ -118,8 +118,8 @@ public class GameActionFragment extends Fragment {
                         Toast.makeText(getContext(), R.string.cantPlayThere, Toast.LENGTH_SHORT).show();
                     }
 
-                    //Check if game is over
-
+                    //GAME CONTROLLER --------------------------------------------------------------
+                    //game controller logic its mostly here since a single touch is responsible for 90% of the interactions
 
                     // State Machine full rotation
                     state = state.applyRules();
@@ -217,6 +217,18 @@ public class GameActionFragment extends Fragment {
         state = state.canPlay();
         newTurn();
         board.invalidate();
+    }
+
+    public void reset() {
+        //ResetDATA
+        state = new GameSetup(new GameDataModel(gameMode));
+        state = state.start();
+        //Reset Board
+        board.reset(state.getGame());
+        board.invalidate();
+        //UpdateUI
+        updateScore();
+        newTurn();
     }
 
     //----------------------------------------------------------------------------------------------

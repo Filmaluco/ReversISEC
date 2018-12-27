@@ -13,11 +13,6 @@ public class ActionPhase extends StateAdapter {
     public IState makeMove(int x, int y) throws IllegalAccessException {
         Log.v("GameBoardView", "User tried to move at " + x + ", " + y);
 
-        // is it the user's turn?
-        if(game.getGameMode() != GameDataModel.GameMode.LOCAL_MULTIPLAYER) {
-            Log.e("GameBoardView", "It wasn't the user's turn! Reprimanding ;)");
-            return this;
-        }
 
         // is the selected square a valid play? (unoccupied, would result in flips)
         int captured = game.move(x, y);

@@ -1,6 +1,5 @@
 package com.example.rmcsilva.reverisectest.ReversiLogic.AI;
 
-import  com.example.rmcsilva.reverisectest.ReversiLogic.Board.*;
 import com.example.rmcsilva.reverisectest.ReversiLogic.GameDataModel;
 
 /**
@@ -9,6 +8,12 @@ import com.example.rmcsilva.reverisectest.ReversiLogic.GameDataModel;
  * @see <a href="https://github.com/dweekly">github.com/dweekly</a>
  */
 public class NegamaxAI implements AI {
+
+    public static class BoardPosition {
+        public int y = -1;
+        public int x = -1;
+    }
+
     private static int maxPly = 3;
     private BoardPosition best;
 
@@ -76,8 +81,8 @@ public class NegamaxAI implements AI {
                     if(childWeight > alpha) {
                         alpha = childWeight;
                         if(ply == maxPly) {
-                            best.y = i;
-                            best.x = j;
+                            best.x = i;
+                            best.y = j;
                         }
                     }
                 }

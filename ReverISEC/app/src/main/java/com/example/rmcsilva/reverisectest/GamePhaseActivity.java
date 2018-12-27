@@ -87,7 +87,7 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                //TODO start a new game
+                gameFragment.reset();
             }
         });
         builder.create().show();

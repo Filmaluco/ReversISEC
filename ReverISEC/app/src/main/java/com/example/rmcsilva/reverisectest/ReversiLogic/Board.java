@@ -14,12 +14,6 @@ import com.example.rmcsilva.reverisectest.ReversiLogic.GameDataModel.ReversiCell
 
 public class Board extends View{
 
-    //Required for AI
-    public static class BoardPosition {
-        public int y = -1;
-        public int x = -1;
-    }
-
     // here were some hardcoded assumptions
     //TODO: protect with fragment WIDTH or HEIGHT (depending on the biggest)
     public int BOARD_SCREEN_SIZE = 500;
@@ -107,5 +101,9 @@ public class Board extends View{
                 }
             }
         }
+    }
+
+    public void reset(GameDataModel game) {
+        this.game = game;
     }
 }
