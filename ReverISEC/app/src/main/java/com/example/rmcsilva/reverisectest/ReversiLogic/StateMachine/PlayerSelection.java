@@ -11,6 +11,10 @@ public class PlayerSelection extends StateAdapter {
     public IState nextPlayer() {
         game.swapSides();
 
+        if(game.isOver()){
+            return this;
+        }
+
         if(game.getBlackPieces() + game.getWhitePieces() == 8*8){
             game.over();
             return this;

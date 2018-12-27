@@ -9,6 +9,9 @@
     <string name="extraMoveDescription">Extra Move</string>
     <string name="settingsDescription">Game Settings</string>
     <string name="passMoveDescription">Pass Move</string>
+    <string name="gameover_white_wins">Player 1 wins</string>
+    <string name="gameover_black_wins">Player 2 wins</string>
+    <string name="gameover_tie">It\'s a tie!</string>
     <string name="cantPlayThere">Can\'t play there</string>
 
     <!-- TODO: Remove or change this placeholder text -->

@@ -13,7 +13,7 @@ public interface IState {
     IState switchPlayer(GameMode mode);
     IState makeMove(int x, int y) throws IllegalAccessException;
     IState nextPlayer();
-    IState canPlay();
+    IState canPlay() throws IllegalStateException;
 
 
     GameDataModel getGame();

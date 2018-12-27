@@ -8,10 +8,14 @@ public class PlayerTurn extends StateAdapter {
     }
 
     @Override
-    public IState canPlay() {
+    public IState canPlay() throws IllegalStateException{
         if(!game.isAMovePossible()){
             game.updateLoopControl(false);
-            return new PlayerSelection(game);
+            if(game.inLopp()){
+                game.over();
+                return new PlayerSelection(game);
+            }
+            throw new IllegalStateException("Player can't play");
         }
 
         return new ActionPhase(game);

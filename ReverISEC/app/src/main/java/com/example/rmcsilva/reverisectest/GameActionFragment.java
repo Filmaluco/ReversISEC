@@ -21,6 +21,7 @@ import com.example.rmcsilva.reverisectest.ReversiLogic.Board;
 import com.example.rmcsilva.reverisectest.ReversiLogic.GameDataModel;
 import com.example.rmcsilva.reverisectest.ReversiLogic.StateMachine.GameSetup;
 import com.example.rmcsilva.reverisectest.ReversiLogic.StateMachine.IState;
+import com.example.rmcsilva.reverisectest.ReversiLogic.StateMachine.PlayerSelection;
 import com.example.rmcsilva.reverisectest.ReversiLogic.StateMachine.SelectionPhase;
 
 public class GameActionFragment extends Fragment {
@@ -37,7 +38,6 @@ public class GameActionFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         void gameOver();
         void updateScore(int black, int white);
-        void addicionalMoves(GameDataModel game);
         GameDataModel.GameMode getGameMode();
         void newTurn();
     }
@@ -100,7 +100,9 @@ public class GameActionFragment extends Fragment {
         state = state.start(gameMode);
 
         //Start game
-        state = state.canPlay();
+        try{
+            state = state.canPlay();
+        } catch (Exception ignored){/*Debug mode*/}
 
         board = new Board(getContext(), state.getGame());
         board.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
@@ -128,14 +130,23 @@ public class GameActionFragment extends Fragment {
                     state = state.applyRules();
                     state = state.gameOver();
                     state = state.nextPlayer();
-                    state = state.canPlay();
+                    //Check if it's an impossible scenario -----------------------------------------
+                    try {
+                        state = state.canPlay();
+                    }catch (Exception e){
+                        state = new PlayerSelection(state.getGame());
+                        state = state.nextPlayer();
+                        try{ state = state.canPlay(); } catch (Exception ignored){/*game is over anyway*/}
+                    } //----------------------------------------------------------------------------
                     // UI interaction
                     updateScore();
                     newTurn();
-                    //lock button accordingly (special moves)
-                    if(state.getGame().isOver()) gameOver();
-                        //updateUI
                     v.invalidate();
+                    // Check if game is over
+                    if(state.getGame().isOver()) {
+                        state = state.gameOver();
+                        gameOver();
+                    }
                     return true;
                 }
                 return false;
@@ -182,11 +193,7 @@ public class GameActionFragment extends Fragment {
     }
 
     private void gameOver(){
-
-    }
-
-    private void addicionalMoves(){
-        mListener.addicionalMoves(state.getGame());
+        mListener.gameOver();
     }
 
     private void newTurn(){

@@ -43,8 +43,10 @@ public class GameDataModel {
         this.skipMove = new moveStatus[2]; skipMove[0] = moveStatus.NOT_USED; skipMove[1] = moveStatus.NOT_USED;
         this.extraMove = new moveStatus[2]; extraMove[0] = moveStatus.NOT_USED; extraMove[1] = moveStatus.NOT_USED;
 
+        //this.debugBoard();
         this.clearBoard();
     }
+
 
     /**
      * Create a new Game State based on another.
@@ -95,6 +97,90 @@ public class GameDataModel {
 
         // white goes first (sorry Martin Luther King)
         currentPlayer = ReversiCell.WHITE;
+    }
+
+    /**
+     * Simulates an impossible scneario
+     */
+    private void debugBoard() {
+        //1 - linha
+        boardData[0][0] = ReversiCell.EMPTY;
+        boardData[0][1] = ReversiCell.EMPTY;
+        boardData[0][2] = ReversiCell.EMPTY;
+        boardData[0][3] = ReversiCell.WHITE;
+        boardData[0][4] = ReversiCell.WHITE;
+        boardData[0][5] = ReversiCell.WHITE;
+        boardData[0][6] = ReversiCell.WHITE;
+        boardData[0][7] = ReversiCell.BLACK;
+//----------------------------------
+        boardData[1][0] = ReversiCell.EMPTY;
+        boardData[1][1] = ReversiCell.EMPTY;
+        boardData[1][2] = ReversiCell.WHITE;
+        boardData[1][3] = ReversiCell.EMPTY;
+        boardData[1][4] = ReversiCell.BLACK;
+        boardData[1][5] = ReversiCell.BLACK;
+        boardData[1][6] = ReversiCell.BLACK;
+        boardData[1][7] = ReversiCell.BLACK;
+//----------------------------------
+        boardData[2][0] = ReversiCell.EMPTY;
+        boardData[2][1] = ReversiCell.EMPTY;
+        boardData[2][2] = ReversiCell.EMPTY;
+        boardData[2][3] = ReversiCell.WHITE;
+        boardData[2][4] = ReversiCell.BLACK;
+        boardData[2][5] = ReversiCell.BLACK;
+        boardData[2][6] = ReversiCell.BLACK;
+        boardData[2][7] = ReversiCell.BLACK;
+//----------------------------------
+        boardData[3][0] = ReversiCell.EMPTY;
+        boardData[3][1] = ReversiCell.EMPTY;
+        boardData[3][2] = ReversiCell.EMPTY;
+        boardData[3][3] = ReversiCell.WHITE;
+        boardData[3][4] = ReversiCell.BLACK;
+        boardData[3][5] = ReversiCell.WHITE;
+        boardData[3][6] = ReversiCell.BLACK;
+        boardData[3][7] = ReversiCell.BLACK;
+//----------------------------------
+        boardData[4][0] = ReversiCell.EMPTY;
+        boardData[4][1] = ReversiCell.WHITE;
+        boardData[4][2] = ReversiCell.WHITE;
+        boardData[4][3] = ReversiCell.WHITE;
+        boardData[4][4] = ReversiCell.BLACK;
+        boardData[4][5] = ReversiCell.WHITE;
+        boardData[4][6] = ReversiCell.WHITE;
+        boardData[4][7] = ReversiCell.BLACK;
+//----------------------------------
+        boardData[5][0] = ReversiCell.EMPTY;
+        boardData[5][1] = ReversiCell.EMPTY;
+        boardData[5][2] = ReversiCell.WHITE;
+        boardData[5][3] = ReversiCell.WHITE;
+        boardData[5][4] = ReversiCell.BLACK;
+        boardData[5][5] = ReversiCell.WHITE;
+        boardData[5][6] = ReversiCell.WHITE;
+        boardData[5][7] = ReversiCell.BLACK;
+//----------------------------------
+        boardData[6][0] = ReversiCell.EMPTY;
+        boardData[6][1] = ReversiCell.EMPTY;
+        boardData[6][2] = ReversiCell.EMPTY;
+        boardData[6][3] = ReversiCell.WHITE;
+        boardData[6][4] = ReversiCell.BLACK;
+        boardData[6][5] = ReversiCell.WHITE;
+        boardData[6][6] = ReversiCell.WHITE;
+        boardData[6][7] = ReversiCell.BLACK;
+//----------------------------------
+        boardData[7][0] = ReversiCell.EMPTY;
+        boardData[7][1] = ReversiCell.EMPTY;
+        boardData[7][2] = ReversiCell.EMPTY;
+        boardData[7][3] = ReversiCell.WHITE;
+        boardData[7][4] = ReversiCell.BLACK;
+        boardData[7][5] = ReversiCell.WHITE;
+        boardData[7][6] = ReversiCell.WHITE;
+        boardData[7][7] = ReversiCell.WHITE;
+//----------------------------------
+
+        whitePieces = 24;
+        blackPieces = 19;
+        currentPlayer = ReversiCell.WHITE;
+
     }
 
     /** Swaps current player */
