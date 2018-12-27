@@ -3,6 +3,7 @@
     package="com.example.rmcsilva.reverisectest">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,7 +25,8 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".GamePhaseActivity" />
-        <activity android:name=".OnlineGameSelectionActivity"></activity>
+        <activity android:name=".OnlineGameSelectionActivity" />
+        <activity android:name=".GameSettingsActivity"></activity>
     </application>
 
 </manifest>

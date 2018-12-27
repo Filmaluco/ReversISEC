@@ -19,6 +19,7 @@
     <string name="createGame">Create New Game</string>
     <string name="gamesAvailable">Games Available</string>
     <string name="noGames">No Games Available</string>
+    <string name="noGamesHistory">No Games History</string>
 
 
 </resources>
