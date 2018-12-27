@@ -177,7 +177,7 @@ public class GameActionFragment extends Fragment {
     //----------------------------------------------------------------------------------------------
     // View Interaction (frag -> view)
     //----------------------------------------------------------------------------------------------
-    private void updateScore() {
+    public void updateScore() {
 
         mListener.updateScore(state.getGame().getBlackPieces(),
                               state.getGame().getWhitePieces());

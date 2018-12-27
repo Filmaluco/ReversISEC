@@ -42,6 +42,10 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
         btnSkip = findViewById(R.id.btnPassMove);
 
         gameFragment = (GameActionFragment) getSupportFragmentManager().findFragmentById(R.id.gameFragment);
+
+        //Updated UI
+        gameFragment.updateScore();
+        this.newTurn();
     }
 
     public void onExtraMove(View view){
