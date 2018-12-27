@@ -193,8 +193,8 @@ public class GameDataModel {
      * @param moveMade true means a player successfully moved
      */
    public void updateLoopControl(boolean moveMade){
-        if(moveMade) loopControl = loopControl < 2 ? loopControl++ : loopControl;
-        else         loopControl = loopControl > 0 ? loopControl-- : loopControl;
+        if(moveMade) loopControl = loopControl < 2 ? loopControl+1 : loopControl;
+        else         loopControl = loopControl > 0 ? loopControl-1 : loopControl;
    }
 
     /**
