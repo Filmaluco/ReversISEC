@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.rmcsilva.reverisectest.ReversiLogic.GameDataModel;
+
 public class GameModeSelectionActivity extends AppCompatActivity {
 
     @Override
@@ -27,17 +29,21 @@ public class GameModeSelectionActivity extends AppCompatActivity {
 
     public void playVsComputer(View view) {
         Intent playVsComputer = new Intent(GameModeSelectionActivity.this, GamePhaseActivity.class);
+        playVsComputer.putExtra("gameMode", GameDataModel.GameMode.COMPUTER.name());
         GameModeSelectionActivity.this.startActivity(playVsComputer);
     }
 
     public void playVsUser(View view) {
         Intent playVsUser = new Intent(GameModeSelectionActivity.this, GamePhaseActivity.class);
+        playVsUser.putExtra("gameMode", GameDataModel.GameMode.LOCAL_MULTIPLAYER.name());
         GameModeSelectionActivity.this.startActivity(playVsUser);
     }
 
 
     public void playOnline(View view) {
         Intent playOnline = new Intent(GameModeSelectionActivity.this, OnlineGameSelectionActivity.class);
-        GameModeSelectionActivity.this.startActivity(playOnline);
+        playOnline.putExtra("gameMode", GameDataModel.GameMode.MULTIPLAYER.name());
+        throw new UnsupportedOperationException("Not yet implemented");
+        //GameModeSelectionActivity.this.startActivity(playOnline);
     }
 }

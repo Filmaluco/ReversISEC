@@ -1,6 +1,7 @@
 package com.example.rmcsilva.reverisectest;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
@@ -35,6 +36,8 @@ public class GameActionFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         void gameOver();
         void updateScore(int black, int white);
+        void addicionalMoves(GameDataModel game);
+        GameDataModel.GameMode getGameMode();
     }
 
     //----------------------------------------------------------------------------------------------
@@ -42,12 +45,14 @@ public class GameActionFragment extends Fragment {
     //----------------------------------------------------------------------------------------------
     //Required
     private OnFragmentInteractionListener mListener;
+    Activity mActivity;
 
     //View
     View board;
 
     //GameLogic
     IState state;
+    GameDataModel.GameMode gameMode;
 
 
     //----------------------------------------------------------------------------------------------
@@ -59,6 +64,7 @@ public class GameActionFragment extends Fragment {
     }
 
 
+
     //----------------------------------------------------------------------------------------------
     // Fragment life cycle
     //----------------------------------------------------------------------------------------------
@@ -67,18 +73,19 @@ public class GameActionFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-    }
-    @Override
-    public void onStart(){
-        super.onStart();
-
         //Make sure the view that calls this fragment has a listener to interact with this fragment
         try {
             mListener = (OnFragmentInteractionListener) getActivity();
+            mActivity = getActivity();
+            gameMode = mListener.getGameMode();
         } catch (ClassCastException e) {
             throw new ClassCastException(getActivity().toString()
                     + " must implement OnFragmentInteractionListener");
         }
+    }
+    @Override
+    public void onStart(){
+        super.onStart();
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -86,7 +93,9 @@ public class GameActionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         state = new GameSetup(null);
-        state = state.start(GameDataModel.GameMode.LOCAL_MULTIPLAYER);
+
+        //Start Game
+        state = state.start(gameMode);
         state = state.canPlay();
 
         final Board board = new Board(getContext(), state.getGame());
@@ -107,6 +116,9 @@ public class GameActionFragment extends Fragment {
                         vibrate();
                         Toast.makeText(getContext(), R.string.cantPlayThere, Toast.LENGTH_SHORT).show();
                     }
+
+                    //Check if any move selected
+
 
                     // State Machine full rotation
                     state = state.applyRules();
@@ -159,12 +171,16 @@ public class GameActionFragment extends Fragment {
     // View Interaction
     //----------------------------------------------------------------------------------------------
     private void updateScore() {
-        try { ((GamePhaseActivity) getActivity()).updateScore(  state.getGame().getBlackPieces(),
-            state.getGame().getWhitePieces());
-        }catch (Exception e){ Log.w("Reversi", "Failed to updated UI" + e.getMessage());e.printStackTrace(); }
+
+        mListener.updateScore(state.getGame().getBlackPieces(),
+                              state.getGame().getWhitePieces());
     }
 
     private void gameOver(){
 
+    }
+
+    private void addicionalMoves(){
+        mListener.addicionalMoves(state.getGame());
     }
 }
