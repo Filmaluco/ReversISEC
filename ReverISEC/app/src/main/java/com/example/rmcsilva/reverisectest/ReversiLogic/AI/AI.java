@@ -1,8 +1,8 @@
 package com.example.rmcsilva.reverisectest.ReversiLogic.AI;
 
-import com.example.rmcsilva.reverisectest.ReversiLogic.Board;
-import com.example.rmcsilva.reverisectest.ReversiLogic.GameState;
+import com.example.rmcsilva.reverisectest.ReversiLogic.Board.BoardPosition;
+import com.example.rmcsilva.reverisectest.ReversiLogic.GameDataModel;
 
 public interface AI {
-    public Board.BoardPosition computerMove(GameState state);
+    BoardPosition computerMove(GameDataModel game);
 }

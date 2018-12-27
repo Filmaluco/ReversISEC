@@ -1,16 +1,57 @@
 package com.example.rmcsilva.reverisectest.ReversiLogic.StateMachine;
 
-import com.example.rmcsilva.reverisectest.ReversiLogic.AI.AI;
-import com.example.rmcsilva.reverisectest.ReversiLogic.Board;
-import com.example.rmcsilva.reverisectest.ReversiLogic.Board.*;
+
+import com.example.rmcsilva.reverisectest.ReversiLogic.GameDataModel;
 
 public class StateAdapter implements IState {
 
-    private ReversiCell board[][];
-    private int dims;
-    private ReversiCell currentPlayer;
-    private AI ai;
-    private Board view;
+    protected GameDataModel game;
 
+    public StateAdapter(GameDataModel g) { this.game = g; }
 
+    @Override
+    public IState start(GameDataModel.GameMode mode) { return this; }
+
+    @Override
+    public IState surrender() {
+        return this;
+    }
+
+    @Override
+    public IState gameOver() {
+        return this;
+    }
+
+    @Override
+    public IState applyRules() {
+        return this;
+    }
+
+    @Override
+    public IState switchPlayer() {
+        return this;
+    }
+
+    @Override
+    public IState makeMove(int x, int y) {
+        return this;
+    }
+
+    @Override
+    public IState nextPlayer() {
+        return this;
+    }
+
+    @Override
+    public IState canPlay() {
+        return this;
+    }
+
+    @Override
+    public GameDataModel getGame() { return game; }
+
+    @Override
+    public IState getState() {
+        return this;
+    }
 }

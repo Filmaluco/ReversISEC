@@ -5,18 +5,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 public class GamePhaseActivity extends AppCompatActivity implements GameActionFragment.OnFragmentInteractionListener {
+
+    TextView whiteScore;
+    TextView blackScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_phase);
-    }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-        Log.i("Reversi", "onFragmentInteraction");
+        blackScore = findViewById(R.id.tvPlayerOneScore);
+        whiteScore = findViewById(R.id.tvPlayerTwoScore);
+
     }
 
     public void onExtraMove(View view){
@@ -25,5 +28,10 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
 
     public void onSkipMove(View view){
         Log.i("Reversi", "onSkipMove");
+    }
+
+    public void updateScore(int black, int white){
+        blackScore.setText(Integer.toString(black));
+        whiteScore.setText(Integer.toString(white));
     }
 }
