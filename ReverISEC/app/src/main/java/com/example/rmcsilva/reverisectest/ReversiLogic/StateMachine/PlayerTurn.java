@@ -9,7 +9,6 @@ public class PlayerTurn extends StateAdapter {
 
     @Override
     public IState canPlay() {
-        if(game.inLopp()) return new GameOver(game);
         if(!game.isAMovePossible()){
             game.updateLoopControl(false);
             return new PlayerSelection(game);

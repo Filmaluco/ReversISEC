@@ -8,8 +8,9 @@ public class GameDataModel {
     // Variables
     //----------------------------------------------------------------------------------------------
     //Public
-    public enum GameMode { multiplayer, localMultiplayer, computer }
+    public enum GameMode { MULTIPLAYER, LOCAL_MULTIPLAYER, COMPUTER }
     public enum ReversiCell { EMPTY, WHITE, BLACK}
+    private enum moveStatus { NOT_USED, USED, SELECTED}
 
     //Private
         //CONSTANTS
@@ -19,6 +20,8 @@ public class GameDataModel {
     private ReversiCell currentPlayer;
     private int loopControl;
     private GameMode gameMode;
+    private boolean isOver;
+    private moveStatus skipMove[], extraMove[];
         //UI
     protected int whitePieces = 0;
     protected int blackPieces = 0;
@@ -37,6 +40,9 @@ public class GameDataModel {
         this.loopControl = 1;
         this.gameMode = gameMode;
         this.clearBoard();
+        this.isOver = false;
+        this.skipMove = new moveStatus[2];
+        this.extraMove = new moveStatus[2];
     }
 
     /**
@@ -48,6 +54,9 @@ public class GameDataModel {
         this.boardData = new ReversiCell[SIZE][SIZE];
         this.loopControl = copy.loopControl;
         this.gameMode = copy.gameMode;
+        this.isOver = copy.isOver;
+        this.skipMove = copy.skipMove;
+        this.extraMove = copy.extraMove;
         for(int y=0; y<SIZE; y++){
             for(int x=0; x<SIZE; x++){
                 this.boardData[y][x] = copy.boardData[y][x];
@@ -208,6 +217,41 @@ public class GameDataModel {
         this.blackPieces = blackPieces;
     }
 
+    public void over() { this.isOver = true;}
+    public boolean isOver() {return this.isOver;}
+
+    public void setGameMode(GameMode mode) {
+        this.gameMode = mode;
+    }
+
+    public void useSkip(){
+        if( currentPlayer == ReversiCell.WHITE ) skipMove[0] = moveStatus.SELECTED;
+        else                                     skipMove[1] = moveStatus.SELECTED;
+    }
+
+    public void useExtra(){
+        if( currentPlayer == ReversiCell.WHITE ) extraMove[0] = moveStatus.SELECTED;
+        else                                     extraMove[1] = moveStatus.SELECTED;
+    }
+
+    public void useMove(){
+        skipMove[0] = skipMove[0] == moveStatus.SELECTED ?  moveStatus.USED : skipMove[0];
+        skipMove[1] = skipMove[1] == moveStatus.SELECTED ?  moveStatus.USED : skipMove[1];
+        extraMove[0] = extraMove[0] == moveStatus.SELECTED ?  moveStatus.USED : extraMove[0];
+        extraMove[1] = extraMove[1] == moveStatus.SELECTED ?  moveStatus.USED : extraMove[1];
+    }
+
+    public boolean selectedSkip(){
+        if( currentPlayer == ReversiCell.WHITE )  return skipMove[0] == moveStatus.SELECTED;
+        else                                      return skipMove[1] == moveStatus.SELECTED;
+    }
+
+    public boolean selectedExtra(){
+        if( currentPlayer == ReversiCell.WHITE )  return extraMove[0] == moveStatus.SELECTED;
+        else                                      return extraMove[1] == moveStatus.SELECTED;
+    }
+
+
     //----------------------------------------------------------------------------------------------
     // UI Methods
     //----------------------------------------------------------------------------------------------
@@ -234,6 +278,16 @@ public class GameDataModel {
     public ReversiCell getCell(int x, int y){
         if( !(y >= 0) || !(y < SIZE) || !(x >= 0) || !(x < SIZE)) throw new IllegalArgumentException("Given coordinates are not possible");
         return boardData[y][x];
+    }
+
+    public boolean canSkip(){
+        if( currentPlayer == ReversiCell.WHITE )  return skipMove[0] == moveStatus.NOT_USED;
+        else                                      return skipMove[1] == moveStatus.NOT_USED;
+    }
+
+    public boolean canExtra(){
+        if( currentPlayer == ReversiCell.WHITE )  return extraMove[0] == moveStatus.NOT_USED;
+        else                                      return extraMove[1] == moveStatus.NOT_USED;
     }
 
 }

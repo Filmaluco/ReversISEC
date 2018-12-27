@@ -9,6 +9,7 @@
     <string name="extraMoveDescription">Extra Move</string>
     <string name="settingsDescription">Game Settings</string>
     <string name="passMoveDescription">Pass Move</string>
+    <string name="cantPlayThere">Can\'t play there</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

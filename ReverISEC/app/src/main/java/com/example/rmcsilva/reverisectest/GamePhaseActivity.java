@@ -30,8 +30,15 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
         Log.i("Reversi", "onSkipMove");
     }
 
+    @Override
+    public void gameOver() {
+
+    }
+
     public void updateScore(int black, int white){
         blackScore.setText(Integer.toString(black));
         whiteScore.setText(Integer.toString(white));
     }
+
+
 }

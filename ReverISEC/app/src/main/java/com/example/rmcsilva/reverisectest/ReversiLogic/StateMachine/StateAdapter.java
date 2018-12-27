@@ -28,12 +28,10 @@ public class StateAdapter implements IState {
     }
 
     @Override
-    public IState switchPlayer() {
-        return this;
-    }
+    public IState switchPlayer(GameDataModel.GameMode mode) { return this; }
 
     @Override
-    public IState makeMove(int x, int y) {
+    public IState makeMove(int x, int y) throws IllegalAccessException {
         return this;
     }
 

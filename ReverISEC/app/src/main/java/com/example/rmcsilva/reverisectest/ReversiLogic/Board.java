@@ -6,15 +6,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.rmcsilva.reverisectest.R;
 import com.example.rmcsilva.reverisectest.ReversiLogic.GameDataModel.ReversiCell;
-import com.example.rmcsilva.reverisectest.ReversiLogic.StateMachine.GameSetup;
-import com.example.rmcsilva.reverisectest.ReversiLogic.StateMachine.IState;
-import com.example.rmcsilva.reverisectest.ReversiLogic.StateMachine.StateAdapter;
+
 
 public class Board extends View{
 
@@ -72,7 +68,7 @@ public class Board extends View{
         int x, y;
 
         //Update line based on game mode
-        if(game.getGameMode() == GameDataModel.GameMode.computer){
+        if(game.getGameMode() == GameDataModel.GameMode.COMPUTER){
             paint.setColor(getResources().getColor(R.color.colorPrimaryLigh));
         }else {
             if(game.getPlayer() == ReversiCell.WHITE)  paint.setColor(Color.GRAY); //white is too agressive gray is nhee TODO: I leave up to you Ricardo

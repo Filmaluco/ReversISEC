@@ -9,8 +9,10 @@ public class SelectionPhase extends StateAdapter {
 
     @Override
     public IState applyRules() {
-        //TODO: special card1
-        //TODO: special card2
+        if(game.selectedExtra()){
+            game.useMove();
+            return new PlayerTurn(game);
+        }
 
 
         return new PlayerSelection(game);

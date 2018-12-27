@@ -10,11 +10,11 @@ public class ActionPhase extends StateAdapter {
     }
 
     @Override
-    public IState makeMove(int x, int y) {
+    public IState makeMove(int x, int y) throws IllegalAccessException {
         Log.v("GameBoardView", "User tried to move at " + x + ", " + y);
 
         // is it the user's turn?
-        if(game.getGameMode() != GameDataModel.GameMode.localMultiplayer) {
+        if(game.getGameMode() != GameDataModel.GameMode.LOCAL_MULTIPLAYER) {
             Log.e("GameBoardView", "It wasn't the user's turn! Reprimanding ;)");
             return this;
         }
@@ -23,7 +23,7 @@ public class ActionPhase extends StateAdapter {
         int captured = game.move(x, y);
         if (captured == 0) {
             Log.e("GameBoardView", "User's move at " + x + ", " + y + " was not valid.");
-            return this;
+            throw new IllegalAccessException("Can't move to ["+x+","+y+"]");
         }
         Log.i("GameBoardView", "User's move at " + x + "," + y + " was valid w/take of " + captured + " piece(s)");
 
@@ -35,7 +35,19 @@ public class ActionPhase extends StateAdapter {
             game.setWhitePieces(game.getWhitePieces()-captured);
         }
 
+        game.updateLoopControl(true);
         return new SelectionPhase(game);
     }
 
+    @Override
+    public IState switchPlayer(GameDataModel.GameMode mode) {
+        game.setGameMode(mode);
+        return this;
+    }
+
+    @Override
+    public IState surrender() {
+        game.over();
+        return new GameOver(game);
+    }
 }

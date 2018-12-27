@@ -6,5 +6,7 @@ public class GameOver extends StateAdapter {
 
     public GameOver(GameDataModel g) {
         super(g);
+
+        game.over();
     }
 }

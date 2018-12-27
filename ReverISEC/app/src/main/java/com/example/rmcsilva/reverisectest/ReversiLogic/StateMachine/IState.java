@@ -10,8 +10,8 @@ public interface IState {
     IState gameOver();
 
     IState applyRules();
-    IState switchPlayer();
-    IState makeMove(int x, int y);
+    IState switchPlayer(GameMode mode);
+    IState makeMove(int x, int y) throws IllegalAccessException;
     IState nextPlayer();
     IState canPlay();
 
