@@ -15,7 +15,9 @@ import com.example.rmcsilva.reverisectest.ReversiLogic.GameDataModel;
 public class GamePhaseActivity extends AppCompatActivity implements GameActionFragment.OnFragmentInteractionListener {
 
     TextView tvWhiteScore,
-             tvBlackScore;
+             tvBlackScore,
+             tvBlackIndicator,
+             tvWhiteIndicator;
 
     ImageButton btnExtra,
                 btnSkip;
@@ -34,6 +36,8 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
 
         tvBlackScore = findViewById(R.id.tvPlayerOneScore);
         tvWhiteScore = findViewById(R.id.tvPlayerTwoScore);
+        tvBlackIndicator = findViewById(R.id.tvPlayerOneIndicator);
+        tvWhiteIndicator = findViewById(R.id.tvPlayerTwoIndicator);
         btnExtra = findViewById(R.id.btnExtraMove);
         btnSkip = findViewById(R.id.btnPassMove);
 
@@ -98,6 +102,14 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
     @Override
     public void newTurn() {
         //TODO: change image focus based on player
+        if (gameFragment.state.getGame().getPlayer()==GameDataModel.ReversiCell.WHITE){
+            tvBlackIndicator.setVisibility(View.INVISIBLE);
+            tvWhiteIndicator.setVisibility(View.VISIBLE);
+        } else {
+            tvBlackIndicator.setVisibility(View.VISIBLE);
+            tvWhiteIndicator.setVisibility(View.INVISIBLE);
+        }
+
         if(gameFragment.canSkip()){
             btnSkip.setAlpha(1F);
         }else{
