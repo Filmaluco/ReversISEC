@@ -196,7 +196,8 @@
         app:layout_constraintEnd_toStartOf="@+id/btnPassMove"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnExtraMove"
-        android:contentDescription="@string/settingsDescription" />
+        android:contentDescription="@string/settingsDescription"
+        android:onClick="onOptions"/>
 
     <ImageButton
         android:id="@+id/btnPassMove"
