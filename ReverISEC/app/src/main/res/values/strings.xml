@@ -13,13 +13,26 @@
     <string name="gameover_black_wins">Player 2 wins</string>
     <string name="gameover_tie">It\'s a tie!</string>
     <string name="cantPlayThere">Can\'t play there</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    
     <string name="createGame">Create New Game</string>
     <string name="gamesAvailable">Games Available</string>
     <string name="noGames">No Games Available</string>
     <string name="noGamesHistory">No Games History</string>
-
+    <string name="title_activity_game_info">GameInfoActivity</string>
+    <string name="nav_header_title">ReverISEC</string>
+    <string name="nav_header_subtitle">Information</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="navMenuAuthors">Authors</string>
+    <string name="navMenuRules">Rules</string>
+    <string name="navMenuFeatures">Features</string>
+    <string name="navMenuAbout">About</string>
+    <string name="navMenuOptions">Options</string>
+    <string name="navMenuTitle">Game Information</string>
+    <string name="aboutMenuContent">Reversi is a strategy board game for two players, played on an 8×8 uncheckered board. \n\nThere are sixty-four identical game pieces called disks, which are light on one side and dark on the other. \n\nPlayers take turns placing disks on the board with their assigned color facing up. \n\nDuring a play, any disks of the opponent\'s color that are in a straight line and bounded by the disk just placed and another disk of the current player\'s color are turned over to the current player\'s color.</string>
+    <string name="rulesMenuContent">The game begins with four disks placed in a square in the middle of the grid, two facing white side up, two pieces with the dark side up, with same-colored disks on a diagonal with each other. \n\nConvention has initial board position such that the disks with dark side up are to the north-east and south-west.\n\nDark must place a piece with the dark side up on the board, in such a position that there exists at least one straight (horizontal, vertical, or diagonal) occupied line between the new piece and another dark piece, with one or more contiguous light pieces between them.\n\nPlayers take alternate turns. If one player can not make a valid move, play passes back to the other player. When neither player can move, the game ends.\n\nThis occurs when the grid has filled up or when neither player can legally place a piece in any of the remaining squares.</string>
+    <string name="optionsMenuContent">When choosing to play the game you have several options\n\nYou can either test your skills against the computer\nOr…\nPlay against a friend on your phone\nIn the future you will be able to play against other players online</string>
+    <string name="featuresMenuContent">Our game offers two extra features\n\nExtra Move allows the player to make another move in a row!\n\nSkip Turn allows the player to pass its turn to the opponent\n\n aUse them wisely because they can only be used once in a game</string>
+    <string name="authorsMenuContent">This game was made by: \n\nFilipe Alves\n\ta21240035\n\nRicardo Silva\n\ta21260250</string>
 
 </resources>

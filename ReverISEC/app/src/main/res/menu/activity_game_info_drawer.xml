@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:title="@string/navMenuTitle">
+            <menu>
+                <item
+                    android:id="@+id/navItemAbout"
+                    android:icon="@drawable/ic_menu_info"
+                    android:title="@string/navMenuAbout" />
+                <item
+                    android:id="@+id/navItemRules"
+                    android:icon="@drawable/ic_menu_rules"
+                    android:title="@string/navMenuRules" />
+                <item
+                    android:id="@+id/navItemOptions"
+                    android:icon="@drawable/ic_bubble"
+                    android:title="@string/navMenuOptions" />
+                <item
+                    android:id="@+id/navItemFeatures"
+                    android:icon="@drawable/ic_menu_videogame"
+                    android:title="@string/navMenuFeatures" />
+                <item
+                    android:id="@+id/navItemAuthors"
+                    android:icon="@drawable/ic_developers"
+                    android:title="@string/navMenuAuthors" />
+            </menu>
+        </item>
+    </group>
+
+
+</menu>

@@ -26,7 +26,11 @@
 
         <activity android:name=".GamePhaseActivity" />
         <activity android:name=".OnlineGameSelectionActivity" />
-        <activity android:name=".GameSettingsActivity"></activity>
+        <activity android:name=".GameSettingsActivity" />
+        <activity
+            android:name=".GameInfoActivity"
+            android:label="@string/title_activity_game_info"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

@@ -71,7 +71,6 @@
         android:textSize="24sp"/>
 
     <Button
-        android:visibility="gone"
         android:id="@+id/button3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

@@ -10,7 +10,7 @@
         <item name="buttonStyle">@style/ButtonBackground</item>
         <item name="imageButtonStyle">@style/ImageButtonBackground</item>
     </style>
-    
+
     <style name="ButtonBackground" parent="Base.Widget.AppCompat.Button">
         <item name="android:background">@drawable/btn_background</item>
     </style>
@@ -18,6 +18,10 @@
     <style name="ImageButtonBackground" parent="Base.Widget.AppCompat.ImageButton">
         <item name="android:background">@drawable/btn_background</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>
