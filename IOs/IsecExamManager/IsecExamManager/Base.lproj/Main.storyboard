@@ -103,59 +103,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcD-Ej-I3h">
-                                <rect key="frame" x="20" y="36" width="280" height="21"/>
+                                <rect key="frame" x="20" y="36" width="280" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NRw-jW-MRg">
-                                <rect key="frame" x="28" y="73" width="264" height="70"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="uWQ-cs-JJF">
+                                <rect key="frame" x="48" y="64.5" width="224" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DhH-Nu-Y8P">
-                                        <rect key="frame" x="20" y="20" width="41" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DhH-Nu-Y8P">
+                                        <rect key="frame" x="0.0" y="0.0" width="41" height="30"/>
                                         <state key="normal" title="Name"/>
                                         <connections>
                                             <action selector="orderByName:" destination="yb7-fg-QNF" eventType="touchUpInside" id="cpE-Hc-aoU"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9T-7J-Yh2">
-                                        <rect key="frame" x="77" y="20" width="38" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Exam"/>
-                                        <connections>
-                                            <action selector="orderByExam:" destination="yb7-fg-QNF" eventType="touchUpInside" id="1jW-nA-oCc"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxa-6E-kqI">
-                                        <rect key="frame" x="131" y="20" width="31" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxa-6E-kqI">
+                                        <rect key="frame" x="57" y="0.0" width="31" height="30"/>
                                         <state key="normal" title="Year"/>
                                         <connections>
                                             <action selector="orderByYear:" destination="yb7-fg-QNF" eventType="touchUpInside" id="vKn-ZQ-VAF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Bh6-CJ-W7d">
-                                        <rect key="frame" x="178" y="20" width="66" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Bh6-CJ-W7d">
+                                        <rect key="frame" x="104" y="0.0" width="66" height="30"/>
                                         <state key="normal" title="Semester"/>
                                         <connections>
                                             <action selector="orderBySemester:" destination="yb7-fg-QNF" eventType="touchUpInside" id="aDD-XP-kMH"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9T-7J-Yh2">
+                                        <rect key="frame" x="186" y="0.0" width="38" height="30"/>
+                                        <state key="normal" title="Exam"/>
+                                        <connections>
+                                            <action selector="orderByExam:" destination="yb7-fg-QNF" eventType="touchUpInside" id="1jW-nA-oCc"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hcD-Ej-I3h" firstAttribute="leading" secondItem="I03-uv-Iqk" secondAttribute="leading" constant="20" id="9EC-Hz-52h"/>
-                            <constraint firstItem="I03-uv-Iqk" firstAttribute="trailing" secondItem="NRw-jW-MRg" secondAttribute="trailing" constant="28" id="Aft-s3-mOP"/>
-                            <constraint firstItem="NRw-jW-MRg" firstAttribute="top" secondItem="hcD-Ej-I3h" secondAttribute="bottom" constant="16" id="Juv-yl-F2n"/>
-                            <constraint firstItem="I03-uv-Iqk" firstAttribute="trailing" secondItem="hcD-Ej-I3h" secondAttribute="trailing" constant="20" id="QjB-M6-PUQ"/>
-                            <constraint firstItem="NRw-jW-MRg" firstAttribute="leading" secondItem="I03-uv-Iqk" secondAttribute="leading" constant="28" id="T5w-Hc-Tmv"/>
-                            <constraint firstItem="NRw-jW-MRg" firstAttribute="centerX" secondItem="s5Q-H3-UWv" secondAttribute="centerX" id="Uoe-YN-8yT"/>
-                            <constraint firstItem="hcD-Ej-I3h" firstAttribute="top" secondItem="I03-uv-Iqk" secondAttribute="top" constant="16" id="rn8-g9-cuH"/>
+                            <constraint firstItem="hcD-Ej-I3h" firstAttribute="leading" secondItem="I03-uv-Iqk" secondAttribute="leading" constant="20" id="Dqc-AD-ltG"/>
+                            <constraint firstItem="uWQ-cs-JJF" firstAttribute="centerX" secondItem="hcD-Ej-I3h" secondAttribute="centerX" id="Guz-5Y-8uc"/>
+                            <constraint firstItem="hcD-Ej-I3h" firstAttribute="top" secondItem="I03-uv-Iqk" secondAttribute="top" constant="16" id="wB0-fZ-04K"/>
+                            <constraint firstItem="uWQ-cs-JJF" firstAttribute="top" secondItem="hcD-Ej-I3h" secondAttribute="bottom" constant="8" symbolic="YES" id="wru-5Q-Ihi"/>
+                            <constraint firstItem="I03-uv-Iqk" firstAttribute="trailing" secondItem="hcD-Ej-I3h" secondAttribute="trailing" constant="20" id="xoO-x5-n9q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I03-uv-Iqk"/>
                     </view>
