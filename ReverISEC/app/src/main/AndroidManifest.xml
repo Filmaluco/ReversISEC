@@ -3,6 +3,8 @@
     package="com.example.rmcsilva.reverisectest">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -30,7 +32,8 @@
         <activity
             android:name=".GameInfoActivity"
             android:label="@string/title_activity_game_info"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".CameraActivity"></activity>
     </application>
 
 </manifest>

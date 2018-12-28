@@ -41,5 +41,6 @@
     <string name="newGame">Novo Jogo</string>
     <string name="playerOne">Jogador</string>
     <string name="playerTwo">Adversário</string>
+    <string name="take_picture">Tirar fotogafrias</string>
 
 </resources>

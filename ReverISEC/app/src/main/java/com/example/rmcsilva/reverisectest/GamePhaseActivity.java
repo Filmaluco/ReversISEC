@@ -2,15 +2,23 @@ package com.example.rmcsilva.reverisectest;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.rmcsilva.reverisectest.ReversiLogic.GameDataModel;
+
+import java.io.File;
+
+import static com.example.rmcsilva.reverisectest.CameraActivity.IMAGE;
 
 public class GamePhaseActivity extends AppCompatActivity implements GameActionFragment.OnFragmentInteractionListener {
 
@@ -19,8 +27,12 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
              tvBlackIndicator,
              tvWhiteIndicator;
 
+    ImageView ivPlayerImage;
+
     ImageButton btnExtra,
                 btnSkip;
+
+    final File file = new File(Environment.getExternalStorageDirectory() + IMAGE);
 
     GameDataModel.GameMode gameMode;
     GameActionFragment gameFragment;
@@ -40,6 +52,14 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
         tvWhiteIndicator = findViewById(R.id.tvPlayerTwoIndicator);
         btnExtra = findViewById(R.id.btnExtraMove);
         btnSkip = findViewById(R.id.btnPassMove);
+
+        ivPlayerImage = findViewById(R.id.ivPlayerOneImage);
+
+        if(file.exists()){
+            ivPlayerImage.setBackground(null);
+            Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
+            ivPlayerImage.setImageBitmap(BitmapFactory.decodeFile(file.getPath()));
+        }
 
         gameFragment = (GameActionFragment) getSupportFragmentManager().findFragmentById(R.id.gameFragment);
 
