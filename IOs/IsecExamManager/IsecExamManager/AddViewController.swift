@@ -69,7 +69,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
     
         //Check if data is above today
-        if Date() > normalPicker.date {
+        if Date() > normalPicker.date && oldCourse == nil{
             normalPicker.becomeFirstResponder()
             examNLabel.textColor = UIColor.red
             return
@@ -78,7 +78,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         examNLabel.textColor = UIColor.black
         
         //check if recurso is above normal
-        if recursoPicker.date < normalPicker.date {
+        if recursoPicker.date < normalPicker.date && oldCourse == nil{
             recursoPicker.becomeFirstResponder()
             examRLabel.textColor = UIColor.red
             return
@@ -87,7 +87,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         examRLabel.textColor = UIColor.black
         
         //check especial
-        if especialPicker.date < recursoPicker.date{
+        if especialPicker.date < recursoPicker.date && oldCourse == nil{
             especialPicker.becomeFirstResponder()
             exameELabel.textColor = UIColor.red
             return

@@ -73,14 +73,59 @@ class ExamTableViewController: UITableViewController {
         formatter.timeStyle = .short
         
         let today = Date()
+        //----------
+        let calendar = Calendar.current
+        var text = ""
         
+   
         //Check if normal exam is next
         if today.compare(courses[row].examN!) == .orderedAscending {
-            cell.detailTextLabel?.text = "Normal Exam is in " + formatter.string(from: courses[row].examN!)
+            //-----------------------------------------
+            let date1 = calendar.startOfDay(for: today)
+            let date2 = calendar.startOfDay(for: courses[row].examN!)
+            
+            let components = calendar.dateComponents([.day], from: date1, to: date2)
+            
+            if components.day! < 31 && components.day! > 5 {
+                cell.detailTextLabel?.text = "Normal Exam is in \(components.day!) days"
+            }else if components.day! < 5 {
+                cell.detailTextLabel?.textColor = UIColor.red
+            
+                text = "Normal Exam is in \(components.day!) days"
+                if components.day! == 0 { text = "Normal Exam is today!"}
+                if components.day! == 1 { text = "Normal Exam tommorow!"}
+                
+                cell.detailTextLabel?.text = text
+            }else{
+                cell.detailTextLabel?.text = "Normal Exam is in " + formatter.string(from: courses[row].examN!)
+            }
+            //-----------------------------------------
+            
         } else if today.compare(courses[row].examN!) == .orderedDescending {
             //If normal exam passed, appeal is next
-            if today.compare(courses[row].examN!) == .orderedAscending {
-                cell.detailTextLabel?.text = "Appeal Exam is in " + formatter.string(from: courses[row].examR!)
+            if today.compare(courses[row].examR!) == .orderedAscending {
+                
+                //-----------------------------------------
+                let date1 = calendar.startOfDay(for: today)
+                let date2 = calendar.startOfDay(for: courses[row].examR!)
+                
+                let components = calendar.dateComponents([.day], from: date1, to: date2)
+                
+                if components.day! < 31 && components.day! > 5 {
+                    cell.detailTextLabel?.text = "Appeal Exam is in \(components.day!) days"
+                }else if components.day! < 5 {
+                    cell.detailTextLabel?.textColor = UIColor.red
+                    
+                    text = "Appeal Exam is in \(components.day!) days"
+                    if components.day! == 0 { text = "Appeal Exam is today!"}
+                    if components.day! == 1 { text = "Appeal Exam tommorow!"}
+                    
+                    cell.detailTextLabel?.text = text
+                }else{
+                    cell.detailTextLabel?.text = "Appeal Exam is in " + formatter.string(from: courses[row].examR!)
+                }
+                //-----------------------------------------
+                
             } else if today.compare(courses[row].examR!) == .orderedDescending {
                 //If appeal passed special exam is next
                 if today.compare(courses[row].examE!) == .orderedAscending{
@@ -199,8 +244,9 @@ class ExamTableViewController: UITableViewController {
             let sort = NSSortDescriptor(key: #keyPath(Course.year), ascending: true)
             fetchRequest.sortDescriptors = [sort]
         case OrderBy.semester:
-            let sort = NSSortDescriptor(key: #keyPath(Course.semester), ascending: true)
-            fetchRequest.sortDescriptors = [sort]
+            let sort1 = NSSortDescriptor(key: #keyPath(Course.year), ascending: true)
+            let sort2 = NSSortDescriptor(key: #keyPath(Course.semester), ascending: true)
+            fetchRequest.sortDescriptors = [sort1, sort2]
         case OrderBy.exam:
             let sort = NSSortDescriptor(key: #keyPath(Course.examN), ascending: true)
             fetchRequest.sortDescriptors = [sort]
@@ -210,6 +256,7 @@ class ExamTableViewController: UITableViewController {
             try courses = context.fetch(fetchRequest) as! [Course]
         }catch _ as NSError{print("Falhou a carregar (blame apple)")}
         //para debug
+        
         for course in courses {
             print(course.name ?? "notDefined")
             print(course.year )
@@ -218,6 +265,26 @@ class ExamTableViewController: UITableViewController {
             print(course.examR ?? "notDefined")
             print("--------------")
         }
+        
     }
-
+    
+    
+    @IBAction func clearData(_ sender: Any) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Course")
+        let context = appDelegate.persistentContainer.viewContext
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let results = try context.fetch(fetchRequest)
+            for object in results {
+                guard let objectData = object as? NSManagedObject else {continue}
+                context.delete(objectData)
+            }
+        } catch let error {
+            print("Detele all data in Courses error :", error)
+        }
+        refreshData()
+        tableView.reloadData()
+    }
+    
 }
