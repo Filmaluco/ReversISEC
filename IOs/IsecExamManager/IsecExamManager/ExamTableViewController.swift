@@ -67,9 +67,30 @@ class ExamTableViewController: UITableViewController {
         //28 Jan 2018
         
         cell.textLabel?.text = courses[row].name ?? "error loading from coursesData"
-        //cell.detailTextLabel?.textColor = UIColor.red
-        cell.detailTextLabel?.text = courses[row].name ?? "error loading from coursesData"
+
+        let formatter = DateFormatter()
+        formatter.dateStyle = DateFormatter.Style.long
+        formatter.timeStyle = .short
         
+        let today = Date()
+        
+        //Check if normal exam is next
+        if today.compare(courses[row].examN!) == .orderedAscending {
+            cell.detailTextLabel?.text = "Normal Exam is in " + formatter.string(from: courses[row].examN!)
+        } else if today.compare(courses[row].examN!) == .orderedDescending {
+            //If normal exam passed, appeal is next
+            if today.compare(courses[row].examN!) == .orderedAscending {
+                cell.detailTextLabel?.text = "Appeal Exam is in " + formatter.string(from: courses[row].examR!)
+            } else if today.compare(courses[row].examR!) == .orderedDescending {
+                //If appeal passed special exam is next
+                if today.compare(courses[row].examE!) == .orderedAscending{
+                    cell.detailTextLabel?.text = "Special Exam is in " + formatter.string(from: courses[row].examE!)
+                } else {
+                    //If special passed there are no examns left
+                    cell.detailTextLabel?.text = "All examns have passed its date!"
+                }
+            }
+        }
         
         // Configure the cell...
 
@@ -164,19 +185,12 @@ class ExamTableViewController: UITableViewController {
         
     }
  
-    // #################################################################################################################################
-    //TODO:
-    //RECEBER UMA ENUMERACAO LA DE CIMA e ter uma predefeninda
     func refreshData(){
         print("Refresquei os meus dados --------------")
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Course")
         
-        // #################################################################################################################################
-        //TODO:
-        //FAZER UM SWITCH BASEADO NA EMUM E FAZER O QUERY
-        //Exemplo de querys de orderBy name!!!!:
         switch orderBy {
         case OrderBy.name:
             let sort = NSSortDescriptor(key: #keyPath(Course.name), ascending: true)
@@ -191,7 +205,6 @@ class ExamTableViewController: UITableViewController {
             let sort = NSSortDescriptor(key: #keyPath(Course.examN), ascending: true)
             fetchRequest.sortDescriptors = [sort]
         }
-        
         
         do{
             try courses = context.fetch(fetchRequest) as! [Course]
