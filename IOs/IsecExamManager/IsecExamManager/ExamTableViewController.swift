@@ -12,12 +12,12 @@ import CoreData
 class ExamTableViewController: UITableViewController {
     
     enum OrderBy :String{
-        case name
-        case Female
+        case name, exam, year, semester
     }
     
     var courses  = [Course]() // Where Locations = your NSManaged Class
     var selectedCourse = Course()
+    var orderBy = OrderBy.name
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,7 +156,12 @@ class ExamTableViewController: UITableViewController {
         if segue.identifier == "editExamSegue" {
             let vc = segue.destination as! AddViewController
             vc.oldCourse = selectedCourse
+        } else if segue.identifier == "orderBySegue"{
+            let vc = segue.destination as! OrderByViewController
+            vc.extamTableViewController = self
+            
         }
+        
     }
  
     // #################################################################################################################################
@@ -172,8 +177,21 @@ class ExamTableViewController: UITableViewController {
         //TODO:
         //FAZER UM SWITCH BASEADO NA EMUM E FAZER O QUERY
         //Exemplo de querys de orderBy name!!!!:
-        let sort = NSSortDescriptor(key: #keyPath(Course.name), ascending: true)
-        fetchRequest.sortDescriptors = [sort]
+        switch orderBy {
+        case OrderBy.name:
+            let sort = NSSortDescriptor(key: #keyPath(Course.name), ascending: true)
+            fetchRequest.sortDescriptors = [sort]
+        case OrderBy.year:
+            let sort = NSSortDescriptor(key: #keyPath(Course.year), ascending: true)
+            fetchRequest.sortDescriptors = [sort]
+        case OrderBy.semester:
+            let sort = NSSortDescriptor(key: #keyPath(Course.semester), ascending: true)
+            fetchRequest.sortDescriptors = [sort]
+        case OrderBy.exam:
+            let sort = NSSortDescriptor(key: #keyPath(Course.examN), ascending: true)
+            fetchRequest.sortDescriptors = [sort]
+        }
+        
         
         do{
             try courses = context.fetch(fetchRequest) as! [Course]

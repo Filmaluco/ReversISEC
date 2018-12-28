@@ -15,6 +15,7 @@
 		40DDFEB121CA6E2A0020AB3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40DDFEAF21CA6E2A0020AB3B /* LaunchScreen.storyboard */; };
 		40DDFEB921CA6EB50020AB3B /* ExamTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DDFEB821CA6EB50020AB3B /* ExamTableViewController.swift */; };
 		40DDFEBB21CA6EE40020AB3B /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DDFEBA21CA6EE40020AB3B /* AddViewController.swift */; };
+		427DB0ED21D5B32000275799 /* OrderByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427DB0EC21D5B32000275799 /* OrderByViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		40DDFEB221CA6E2A0020AB3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40DDFEB821CA6EB50020AB3B /* ExamTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamTableViewController.swift; sourceTree = "<group>"; };
 		40DDFEBA21CA6EE40020AB3B /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		427DB0EC21D5B32000275799 /* OrderByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderByViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				40DDFEAF21CA6E2A0020AB3B /* LaunchScreen.storyboard */,
 				40DDFEB221CA6E2A0020AB3B /* Info.plist */,
 				40DDFEAA21CA6E290020AB3B /* IsecExamManager.xcdatamodeld */,
+				427DB0EC21D5B32000275799 /* OrderByViewController.swift */,
 			);
 			path = IsecExamManager;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			files = (
 				40DDFEBB21CA6EE40020AB3B /* AddViewController.swift in Sources */,
 				40DDFEA621CA6E290020AB3B /* ViewController.swift in Sources */,
+				427DB0ED21D5B32000275799 /* OrderByViewController.swift in Sources */,
 				40DDFEA421CA6E290020AB3B /* AppDelegate.swift in Sources */,
 				40DDFEB921CA6EB50020AB3B /* ExamTableViewController.swift in Sources */,
 				40DDFEAC21CA6E290020AB3B /* IsecExamManager.xcdatamodeld in Sources */,
