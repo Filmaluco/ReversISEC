@@ -67,7 +67,6 @@ public class GameActionFragment extends Fragment {
     }
 
 
-
     //----------------------------------------------------------------------------------------------
     // Fragment life cycle
     //----------------------------------------------------------------------------------------------
@@ -229,6 +228,17 @@ public class GameActionFragment extends Fragment {
         //UpdateUI
         updateScore();
         newTurn();
+    }
+
+    public void switchGameMode(GameDataModel.GameMode newMode){
+        gameMode = newMode;
+        if(state.getGame().getPlayer() == GameDataModel.ReversiCell.BLACK){
+            state.getGame().swapSides();
+        }
+        state = state.switchPlayer(newMode);
+        updateScore();
+        newTurn();
+        board.invalidate();
     }
 
     //----------------------------------------------------------------------------------------------

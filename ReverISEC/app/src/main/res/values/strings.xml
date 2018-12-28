@@ -13,7 +13,11 @@
     <string name="gameover_black_wins">Player 2 wins</string>
     <string name="gameover_tie">It\'s a tie!</string>
     <string name="cantPlayThere">Can\'t play there</string>
-    
+    <string-array name="gameModes">
+        <item>vsComputer</item>
+        <item>vsHuman</item>
+        <item>---</item>
+    </string-array>
     <string name="createGame">Create New Game</string>
     <string name="gamesAvailable">Games Available</string>
     <string name="noGames">No Games Available</string>

@@ -47,6 +47,9 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
         gameFragment.updateScore();
         this.newTurn();
     }
+    //----------------------------------------------------------------------------------------------
+    // UI Buttons
+    //----------------------------------------------------------------------------------------------
 
     public void onExtraMove(View view){
         Log.i("Reversi", "onExtraMove");
@@ -62,6 +65,34 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
         btnSkip.setAlpha(0.5F);
         gameFragment.useSkip();
     }
+
+    public void onOptions(final View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //TODO: convert in R.String
+        builder.setTitle(R.string.gameModeMenu);
+        builder.setItems(R.array.gameModes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case 0: {
+                        if (gameMode == GameDataModel.GameMode.COMPUTER) break;
+                        gameMode = GameDataModel.GameMode.COMPUTER;
+                        gameFragment.switchGameMode(gameMode);
+                    }break;
+                    case 1: {
+                        if (gameMode == GameDataModel.GameMode.LOCAL_MULTIPLAYER) break;
+                        gameMode = GameDataModel.GameMode.LOCAL_MULTIPLAYER;
+                        gameFragment.switchGameMode(gameMode);
+                    }break;
+                }
+            }
+        });
+        builder.show();
+    }
+
+    //----------------------------------------------------------------------------------------------
+    // Fragment Call Backs
+    //----------------------------------------------------------------------------------------------
 
     @Override
     public void gameOver() {
@@ -93,15 +124,11 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
         builder.create().show();
     }
 
-    public void updateScore(int black, int white){
-        tvBlackScore.setText(Integer.toString(black));
-        tvWhiteScore.setText(Integer.toString(white));
-    }
-
     @Override
     public GameDataModel.GameMode getGameMode() {
         return gameMode;
     }
+
 
     @Override
     public void newTurn() {
@@ -124,6 +151,12 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
         }else {
             btnExtra.setAlpha(0.5F);
         }
+    }
+
+    @Override
+    public void updateScore(int black, int white){
+        tvBlackScore.setText(Integer.toString(black));
+        tvWhiteScore.setText(Integer.toString(white));
     }
 
 }
