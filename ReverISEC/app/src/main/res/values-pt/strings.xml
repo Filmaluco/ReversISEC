@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">ReversISEC</string>
+    <string name="logoImageDescription">Logotípo</string>
+    <string name="mainMenuPlay">Jogar</string>
+    <string name="mainMenuInfo">Informações</string>
+    <string name="mainMenuSettings">Definições</string>
+    <string name="gameModeMenu">Modo de jogo</string>
+    <string name="versus">VS</string>
+    <string name="extraMoveDescription">Movimento Extra</string>
+    <string name="settingsDescription">Definições do Jogo</string>
+    <string name="passMoveDescription">Passar Jogada</string>
+    <string name="gameover_white_wins">Jogador 1 Ganhou</string>
+    <string name="gameover_black_wins">Jogador 2 Ganhou</string>
+    <string name="gameover_tie">Empataram!</string>
+    <string name="cantPlayThere">Jogada Inválida!</string>
+    <string-array name="gameModes">
+        <item>vsComputador</item>
+        <item>vsHumano</item>
+        <item>---</item>
+    </string-array>
+    <string name="createGame">Criar Novo Jogo</string>
+    <string name="gamesAvailable">Jogos Disponíveis</string>
+    <string name="noGames">Não ha jogos disponíveis</string>
+    <string name="noGamesHistory">Sem Histórico</string>
+    <string name="title_activity_game_info">GameInfoActivity</string>
+    <string name="nav_header_title">ReverISEC</string>
+    <string name="nav_header_subtitle">Informações</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Definições</string>
+    <string name="navMenuAuthors">Autores</string>
+    <string name="navMenuRules">Regras</string>
+    <string name="navMenuFeatures">Características</string>
+    <string name="navMenuAbout">Acerca</string>
+    <string name="navMenuOptions">Opções</string>
+    <string name="navMenuTitle">Informações do Jogo</string>
+    <string name="aboutMenuContent">O Reversi é um jogo de estratégia para dois jogadores, é jogado num tabuleiro 8x8 com cores alternadas.\n\nHá 64 peças identicas chamadas disco, estes são claros num lado e escuros noutro.\n\nOs jogadores vão colocando os discos alternadamente com a cor correspondente voltada para cima no tabuleiro.\n\nDurante a jogada qualquer disco da cor do adversário que esteja numa linha reta e nas redondezas com o disco que foi colocado é trocado as suas cores para a cor do disco do jogador.</string>
+    <string name="rulesMenuContent">O jogo começa com quatro disco no meio do tabuleiro, dois com o lado branco virado para cima, e os outros com o lado preto, sendo que os disco de mesma cor tem que estar posicionados na diagonal uns com os outros.\n\nPor convenção o tabuleiro inicial tem os discos do lado preto virado para cima no canto superior direito e inferior esquerdo\n\nAs peças pretas têm que efetuar uma jogada numa posição de modo a que exista pelo menos uma linha direta (quer seja horizontal, vertial ou diagonal) ocupada entre a peça que foi colocada e outra peça preta existente, com pelo menos uma ou mais peças brancas entre estas.\n\nOs jogadores alternam o turno após cada jogada. Se um jogador não poder realizar uma jogada válida, esta passa para o seu adversário. Quando nenhum dos jogadores poder efetuar uma jogada, o jogo termina!\n\nEsta condição pode ser efetuada quando o tabuleiro está preenchido ou quando nenhum jogador pode efetuar uma jogada válida nos quadrados disponíveis.</string>
+    <string name="optionsMenuContent">Antes de iniciar um jogo é possível escolher várias opções\n\nPodemos optar por testar as nossas capacidades contra o computador\nOu…\nJogar contra um amigo no telefone\nNo futuro será possível jogar online contra outros jogadores</string>
+    <string name="featuresMenuContent">O nosso jogo tem duas funcionalidades extra!\n\nA Jogada Extra permite ao jogador efetuar mais uma jogada extra!\n\nA Passagem de Turno permite ao jogador passar a sua vez ao adversário\n\nEstas funcionalidades podem ser bastantes utéis mas apenas podem ser usadas uma vez, por isso convém serem usadas estratégicamente</string>
+    <string name="authorsMenuContent">Este jogo foi desenvolvido por: \n\nFilipe Alves\n\ta21240035\n\nRicardo Silva\n\ta21260250</string>
+    <string name="newGame">Novo Jogo</string>
+    <string name="playerOne">Jogador</string>
+    <string name="playerTwo">Adversário</string>
+
+</resources>

@@ -38,5 +38,8 @@
     <string name="optionsMenuContent">When choosing to play the game you have several options\n\nYou can either test your skills against the computer\nOr…\nPlay against a friend on your phone\nIn the future you will be able to play against other players online</string>
     <string name="featuresMenuContent">Our game offers two extra features\n\nExtra Move allows the player to make another move in a row!\n\nSkip Turn allows the player to pass its turn to the opponent\n\n aUse them wisely because they can only be used once in a game</string>
     <string name="authorsMenuContent">This game was made by: \n\nFilipe Alves\n\ta21240035\n\nRicardo Silva\n\ta21260250</string>
+    <string name="newGame">New Game</string>
+    <string name="playerOne">Player One</string>
+    <string name="playerTwo">Player Two</string>
 
 </resources>

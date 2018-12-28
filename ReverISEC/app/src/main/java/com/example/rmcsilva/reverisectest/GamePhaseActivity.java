@@ -114,7 +114,7 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
 
         builder.setMessage("["+whitePieces+"] white pieces \n VS\n ["+blackPieces+"] black pieces");
 
-        builder.setPositiveButton("New Game", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getString(R.string.newGame), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
