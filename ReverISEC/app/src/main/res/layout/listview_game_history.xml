@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvPlayerOneIndicator"
+        android:background="@color/colorBlack"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvPlayerTwoIndicator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvPlayerOneNameHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="PlayerOne"
+        app:layout_constraintEnd_toStartOf="@+id/tvPlayerTwoIndicator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPlayerOneScoreHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="25"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        android:paddingBottom="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvPlayerOneNameHistory"
+        app:layout_constraintStart_toStartOf="@+id/tvPlayerOneNameHistory"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlayerOneNameHistory" />
+
+
+
+    <TextView
+        android:id="@+id/tvPlayerTwoIndicator"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvPlayerOneIndicator"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorWhite"/>
+
+    <TextView
+        android:id="@+id/tvPlayerTwoNameHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="PlayerTwo"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvPlayerTwoIndicator"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPlayerTwoScoreHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="35"
+        android:textSize="20sp"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintEnd_toEndOf="@+id/tvPlayerTwoNameHistory"
+        app:layout_constraintStart_toStartOf="@+id/tvPlayerTwoNameHistory"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlayerTwoNameHistory" />
+
+</android.support.constraint.ConstraintLayout>

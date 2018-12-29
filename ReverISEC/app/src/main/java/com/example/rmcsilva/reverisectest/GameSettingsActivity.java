@@ -20,6 +20,7 @@ import com.example.rmcsilva.reverisectest.ReversiLogic.ReversIsecScoreManager;
 import com.example.rmcsilva.reverisectest.ReversiLogic.ReversIsecScoreManager.ReversIsecScore;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.rmcsilva.reverisectest.CameraActivity.IMAGE;
@@ -32,6 +33,8 @@ public class GameSettingsActivity extends AppCompatActivity {
     ListView gameHistory;
     ImageView playerImage;
     TextView emptyText;
+
+    public static GameHistoryAdapter adapter;
 
     private static final int REQUEST_CODE = 1;
     private Bitmap bitmap;
@@ -50,15 +53,20 @@ public class GameSettingsActivity extends AppCompatActivity {
         emptyText = (TextView)findViewById(android.R.id.empty);
         gameHistory.setEmptyView(emptyText);
 
-
         if(file.exists()){
             playerImage.setBackground(null);
             Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
             playerImage.setImageBitmap(BitmapFactory.decodeFile(file.getPath()));
         }
 
-        List<ReversIsecScore> scoreList = ReversIsecScoreManager.loadScore(this);
-       Log.i("score","Scores in memory: ");
+        ArrayList<ReversIsecScore> scoreList = ReversIsecScoreManager.loadScore(this);
+
+        adapter = new GameHistoryAdapter(scoreList, getApplicationContext());
+        adapter.setLayout(R.layout.listview_game_history);
+
+        gameHistory.setAdapter(adapter);
+
+        Log.i("score","Scores in memory: ");
         for (int i = 0; i < scoreList.size(); i++){
             Log.i("score", scoreList.get(i).toString());
         }
@@ -72,6 +80,7 @@ public class GameSettingsActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         if(file.exists()){
+            playerImage.setBackground(null);
             Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
             playerImage.setImageBitmap(BitmapFactory.decodeFile(file.getPath()));
         }
