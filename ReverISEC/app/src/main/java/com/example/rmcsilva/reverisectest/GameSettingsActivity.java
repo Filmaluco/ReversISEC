@@ -9,13 +9,18 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.rmcsilva.reverisectest.ReversiLogic.ReversIsecScoreManager;
+import com.example.rmcsilva.reverisectest.ReversiLogic.ReversIsecScoreManager.ReversIsecScore;
+
 import java.io.File;
+import java.util.List;
 
 import static com.example.rmcsilva.reverisectest.CameraActivity.IMAGE;
 
@@ -50,6 +55,12 @@ public class GameSettingsActivity extends AppCompatActivity {
             playerImage.setBackground(null);
             Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
             playerImage.setImageBitmap(BitmapFactory.decodeFile(file.getPath()));
+        }
+
+        List<ReversIsecScore> scoreList = ReversIsecScoreManager.loadScore(this);
+       Log.i("score","Scores in memory: ");
+        for (int i = 0; i < scoreList.size(); i++){
+            Log.i("score", scoreList.get(i).toString());
         }
 
         SharedPreferences prefs = getSharedPreferences(PREFERENCES, MODE_PRIVATE);

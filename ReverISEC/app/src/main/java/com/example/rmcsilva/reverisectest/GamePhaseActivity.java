@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.rmcsilva.reverisectest.ReversiLogic.GameDataModel;
+import com.example.rmcsilva.reverisectest.ReversiLogic.ReversIsecScoreManager;
+import com.example.rmcsilva.reverisectest.ReversiLogic.ReversIsecScoreManager.ReversIsecScore;
 
 import java.io.File;
 
@@ -129,6 +130,7 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
 
         int whitePieces = Integer.parseInt((String) tvWhiteScore.getText());
         int blackPieces  = Integer.parseInt((String) tvBlackScore.getText());
+        String player1Name = tvPlayerOneName.getText().toString();
 
         if(whitePieces > blackPieces) {
             builder.setTitle(R.string.gameover_white_wins);
@@ -141,6 +143,9 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
         }
 
         builder.setMessage("["+whitePieces+"] white pieces \n VS\n ["+blackPieces+"] black pieces");
+        ReversIsecScore score = new ReversIsecScore(whitePieces, blackPieces, player1Name, "player2", gameMode.name());
+        ReversIsecScoreManager.saveScore(this, score);
+
 
         builder.setPositiveButton(getString(R.string.newGame), new DialogInterface.OnClickListener() {
             @Override
