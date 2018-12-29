@@ -41,6 +41,10 @@
     <string name="newGame">Novo Jogo</string>
     <string name="playerOne">Jogador</string>
     <string name="playerTwo">Adversário</string>
-    <string name="take_picture">Tirar fotogafrias</string>
+    <string name="take_picture">Tirar fotografia</string>
+    <string name="alertEnterName">Introduza o seu nome:</string>
+    <string name="alertNameTitle">Nome</string>
+    <string name="altertNameConfirm">Confirmar Nome</string>
+    <string name="alertNameBack">Voltar ao Menu</string>
 
 </resources>

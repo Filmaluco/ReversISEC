@@ -2,6 +2,7 @@ package com.example.rmcsilva.reverisectest;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -19,13 +20,15 @@ import com.example.rmcsilva.reverisectest.ReversiLogic.GameDataModel;
 import java.io.File;
 
 import static com.example.rmcsilva.reverisectest.CameraActivity.IMAGE;
+import static com.example.rmcsilva.reverisectest.GameSettingsActivity.PREFERENCES;
 
 public class GamePhaseActivity extends AppCompatActivity implements GameActionFragment.OnFragmentInteractionListener {
 
     TextView tvWhiteScore,
              tvBlackScore,
              tvBlackIndicator,
-             tvWhiteIndicator;
+             tvWhiteIndicator,
+             tvPlayerOneName;
 
     ImageView ivPlayerImage;
 
@@ -52,6 +55,7 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
         tvWhiteIndicator = findViewById(R.id.tvPlayerTwoIndicator);
         btnExtra = findViewById(R.id.btnExtraMove);
         btnSkip = findViewById(R.id.btnPassMove);
+        tvPlayerOneName = findViewById(R.id.tvPlayerOneName);
 
         ivPlayerImage = findViewById(R.id.ivPlayerOneImage);
 
@@ -60,6 +64,10 @@ public class GamePhaseActivity extends AppCompatActivity implements GameActionFr
             Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
             ivPlayerImage.setImageBitmap(BitmapFactory.decodeFile(file.getPath()));
         }
+
+        SharedPreferences prefs = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
+        String name = prefs.getString("name", null);
+        if (name != null) tvPlayerOneName.setText(name);
 
         gameFragment = (GameActionFragment) getSupportFragmentManager().findFragmentById(R.id.gameFragment);
 

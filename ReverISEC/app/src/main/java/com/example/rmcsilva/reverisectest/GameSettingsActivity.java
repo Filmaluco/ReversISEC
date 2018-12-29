@@ -1,6 +1,7 @@
 package com.example.rmcsilva.reverisectest;
 
-import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -8,14 +9,13 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 import static com.example.rmcsilva.reverisectest.CameraActivity.IMAGE;
 
@@ -51,6 +51,10 @@ public class GameSettingsActivity extends AppCompatActivity {
             Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
             playerImage.setImageBitmap(BitmapFactory.decodeFile(file.getPath()));
         }
+
+        SharedPreferences prefs = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
+        String name = prefs.getString("name", null);
+        if (name != null) playerName.setText(name);
     }
 
     @Override
@@ -60,15 +64,43 @@ public class GameSettingsActivity extends AppCompatActivity {
             Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
             playerImage.setImageBitmap(BitmapFactory.decodeFile(file.getPath()));
         }
+
+        SharedPreferences prefs = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
+        String name = prefs.getString("name", null);
+        if (name != null) playerName.setText(name);
+
     }
 
     public void onChangePhoto(View view) {
-            Intent openCamera = new Intent(GameSettingsActivity.this, CameraActivity.class);
-            GameSettingsActivity.this.startActivity(openCamera);
-        }
+        Intent openCamera = new Intent(GameSettingsActivity.this, CameraActivity.class);
+        GameSettingsActivity.this.startActivity(openCamera);
+    }
 
+    public void onChangeName(View view) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        final EditText edittext = new EditText(this);
+        alert.setMessage(getString(R.string.alertEnterName));
+        alert.setTitle(getString(R.string.alertNameTitle));
 
+        alert.setView(edittext);
 
+        alert.setPositiveButton(getString(R.string.altertNameConfirm), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //TODO: Verify length
+                String newName = edittext.getText().toString();
+                playerName.setText(newName);
+                SharedPreferences.Editor editor = getSharedPreferences(PREFERENCES, MODE_PRIVATE).edit();
+                editor.putString("name", newName);
+                editor.apply();
+            }
+        });
 
+        alert.setNegativeButton(getString(R.string.alertNameBack), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // what ever you want to do with No option.
+            }
+        });
+        alert.show();
 
+    }
 }
