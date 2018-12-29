@@ -17,7 +17,7 @@ class ExamTableViewController: UITableViewController {
     
     var courses  = [Course]() // Where Locations = your NSManaged Class
     var selectedCourse = Course()
-    var orderBy = OrderBy.name
+    var orderBy = OrderBy.exam
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,7 +129,26 @@ class ExamTableViewController: UITableViewController {
             } else if today.compare(courses[row].examR!) == .orderedDescending {
                 //If appeal passed special exam is next
                 if today.compare(courses[row].examE!) == .orderedAscending{
-                    cell.detailTextLabel?.text = "Special Exam is in " + formatter.string(from: courses[row].examE!)
+                    
+                    let date1 = calendar.startOfDay(for: today)
+                    let date2 = calendar.startOfDay(for: courses[row].examE!)
+                    
+                    let components = calendar.dateComponents([.day], from: date1, to: date2)
+                    
+                    if components.day! < 31 && components.day! > 5 {
+                        cell.detailTextLabel?.text = "Special Exam is in \(components.day!) days"
+                    }else if components.day! < 5 {
+                        cell.detailTextLabel?.textColor = UIColor.red
+                        
+                        text = "Special Exam is in \(components.day!) days"
+                        if components.day! == 0 { text = "Special Exam is today!"}
+                        if components.day! == 1 { text = "Special Exam tommorow!"}
+                        
+                        cell.detailTextLabel?.text = text
+                    }else{
+                        cell.detailTextLabel?.text = "Special Exam is in " + formatter.string(from: courses[row].examR!)
+                    }
+                    
                 } else {
                     //If special passed there are no examns left
                     cell.detailTextLabel?.text = "All examns have passed its date!"
