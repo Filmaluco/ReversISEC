@@ -52,20 +52,6 @@ class ExamTableViewController: UITableViewController {
 
         let row = indexPath.row
         
-        // #################################################################################################################################
-        //TODO: fazer analise de dados, ver qual a data mais proximo e mostrar essa!!!! se a menos de 3 dias mostrar a vermelho
-        // mostrar ate que tipo de exame e se menos de um mes mostrar por mensagem!
-        // exemplo
-        
-        //AMOV
-        // Faltam 23dias para o exame de epoca normal (black)
-        
-        //AMOV
-        //Faltam 3 dias para o exame de epoca normal (RED)
-        
-        //AMOV )
-        //28 Jan 2018
-        
         cell.textLabel?.text = courses[row].name ?? "error loading from coursesData"
 
         let formatter = DateFormatter()
@@ -152,6 +138,7 @@ class ExamTableViewController: UITableViewController {
                 } else {
                     //If special passed there are no examns left
                     cell.detailTextLabel?.text = "All examns have passed its date!"
+                    cell.detailTextLabel?.textColor = UIColor.black
                 }
             }
         }
@@ -199,7 +186,7 @@ class ExamTableViewController: UITableViewController {
             courses.remove(at: indexPath.row)
             
             
-            //TODO: remove from database 
+            //remove from database 
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
