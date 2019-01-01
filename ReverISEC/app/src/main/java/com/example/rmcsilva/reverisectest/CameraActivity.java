@@ -128,6 +128,7 @@ public class CameraActivity extends AppCompatActivity {
             Toast.makeText(CameraActivity.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
             createCameraPreview();
             closeCamera();
+            stopBackgroundThread();
             finish();
         }
     };
